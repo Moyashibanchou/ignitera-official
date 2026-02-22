@@ -12,15 +12,15 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 bg-[#000000]/60 backdrop-blur-xl z-50 border-b border-white/10">
-            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                 <Link href="/">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="text-2xl font-medium tracking-tighter text-white glow-text"
+                        className="flex items-center gap-2"
                     >
-                        IGNITERA
+                        <img src="/logo.jpg" alt="IGNITERA Logo" className="h-[72px] w-auto object-contain rounded-md" />
                     </motion.div>
                 </Link>
                 <nav className="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
