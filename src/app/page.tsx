@@ -157,9 +157,9 @@ export default function Home() {
                             <GlassCard isPrimary={true}>
                                 <h3 className="text-sm font-medium text-ignitera-500 mb-6 uppercase tracking-wider border-b border-white/10 pb-2 drop-shadow-[0_0_8px_rgba(255,77,0,0.5)]">IGNITERA Model</h3>
                                 <ul className="space-y-4 text-zinc-300 font-light">
-                                    <li className="flex items-center gap-3"><IgnitingTorchIcon isLit={true} delay={0.2} /> <span className="pt-0.5 font-medium text-white">プロジェクト実行ログ</span></li>
-                                    <li className="flex items-center gap-3"><IgnitingTorchIcon isLit={true} delay={0.5} /> <span className="pt-0.5 font-medium text-white">継続的なスキル成長曲線</span></li>
-                                    <li className="flex items-center gap-3"><IgnitingTorchIcon isLit={true} delay={0.8} /> <span className="pt-0.5 font-medium text-white">組織との文化適合スコア</span></li>
+                                    <li className="flex items-center gap-3"><IgnitingTorchIcon isLit={true} delay={0.5} /> <span className="pt-0.5 font-medium text-white">プロジェクト実行ログ</span></li>
+                                    <li className="flex items-center gap-3"><IgnitingTorchIcon isLit={true} delay={1.5} /> <span className="pt-0.5 font-medium text-white">継続的なスキル成長曲線</span></li>
+                                    <li className="flex items-center gap-3"><IgnitingTorchIcon isLit={true} delay={2.5} /> <span className="pt-0.5 font-medium text-white">組織との文化適合スコア</span></li>
                                 </ul>
                                 <p className="mt-8 text-sm text-green-400 font-medium">結果：事実とデータに基づく、透明で確実な評価。</p>
                             </GlassCard>
