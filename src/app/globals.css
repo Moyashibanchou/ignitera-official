@@ -4,9 +4,23 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
 }
 
 body {
-  background-color: white;
-  color: #202124;
+  background-color: #000000;
+  color: #FAFAFA;
+  @apply selection:bg-[#FF4D00] selection:text-white;
+}
+
+/* Linear/Stripe Glassmorphism Utilities */
+.glass-panel {
+  @apply bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-2xl shadow-2xl;
+}
+
+.glow-text {
+  background: linear-gradient(to bottom right, #FFFFFF 0%, #A1A1AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

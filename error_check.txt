@@ -1,0 +1,119 @@
+﻿
+<!DOCTYPE html><html><head><s
+tyle data-next-hide-fouc="tru
+e">body{display:none}</style>
+<noscript data-next-hide-fouc
+="true"><style>body{display:b
+lock}</style></noscript><meta
+ charSet="utf-8"/><meta name=
+"viewport" content="width=dev
+ice-width"/><meta name="next-
+head-count" content="2"/><nos
+cript data-n-css=""></noscrip
+t><script defer="" nomodule="
+" src="/_next/static/chunks/p
+olyfills.js"></script><script
+ src="/_next/static/chunks/fa
+llback/webpack.js" defer=""><
+/script><script src="/_next/s
+tatic/chunks/fallback/main.js
+" defer=""></script><script s
+rc="/_next/static/chunks/fall
+back/pages/_app.js" defer="">
+</script><script src="/_next/
+static/chunks/fallback/pages/
+_error.js" defer=""></script>
+<noscript id="__next_css__DO_
+NOT_USE__"></noscript></head>
+<body><div id="__next"></div>
+<script src="/_next/static/ch
+unks/fallback/react-refresh.j
+s"></script><script id="__NEX
+T_DATA__" type="application/j
+son">{"props":{"pageProps":{"
+statusCode":500}},"page":"/_e
+rror","query":{},"buildId":"d
+evelopment","isFallback":fals
+e,"err":{"name":"Error","sour
+ce":"server","message":"Synta
+x error: C:\\Users\\keike\\On
+eDrive\\g\\ignitera\\src\\app
+\\globals.css The `shadow-[0_
+8px_32px_rgba(0,` class does 
+not exist. If `shadow-[0_8px_
+32px_rgba(0,` is a custom cla
+ss, make sure it is defined w
+ithin a `@layer` directive.\n
+\n  16 | /* Linear/Stripe Gla
+ssmorphism Utilities */\n  17
+ | .glass-panel {\n\u003e 18 
+|   @apply bg-white/[0.02] ba
+ckdrop-blur-xl border border-
+white/[0.05] rounded-2xl shad
+ow-[0_8px_32px_rgba(0, 0, 0, 
+0.5)];\n     |   ^\n  19 | }\
+n  20 | \n","stack":"Error: \
+u001b[31m\u001b[1mSyntax erro
+r\u001b[22m\u001b[39m: C:\\Us
+ers\\keike\\OneDrive\\g\\igni
+tera\\src\\app\\globals.css T
+he `shadow-[0_8px_32px_rgba(0
+,` class does not exist. If `
+shadow-[0_8px_32px_rgba(0,` i
+s a custom class, make sure i
+t is defined within a `@layer
+` directive.\n\n \u001b[90m 1
+6 | \u001b[39m\u001b[90m/* Li
+near/Stripe Glassmorphism Uti
+lities */\u001b[39m\n \u001b[
+90m 17 | \u001b[39m\u001b[33m
+.glass-panel\u001b[39m \u001b
+[33m{\u001b[39m\n\u001b[1m\u0
+01b[31m\u003e\u001b[39m\u001b
+[22m\u001b[90m 18 | \u001b[39
+m  \u001b[36m@apply\u001b[39m
+ bg-white/\u001b[33m[\u001b[3
+9m0.02\u001b[33m]\u001b[39m b
+ackdrop-blur-xl border border
+-white/\u001b[33m[\u001b[39m0
+.05\u001b[33m]\u001b[39m roun
+ded-2xl shadow-\u001b[33m[\u0
+01b[39m\u001b[36m0_8px_32px_r
+gba\u001b[39m\u001b[36m(0, 0,
+ 0, 0.5)\u001b[39m\u001b[33m]
+\u001b[39m\u001b[33m;\u001b[3
+9m\n \u001b[90m    | \u001b[3
+9m  \u001b[1m\u001b[31m^\u001
+b[39m\u001b[22m\n \u001b[90m 
+19 | \u001b[39m\u001b[33m}\u0
+01b[39m\n \u001b[90m 20 | \u0
+01b[39m\n\n    at getCssError
+ (C:\\Users\\keike\\OneDrive\
+\g\\ignitera\\node_modules\\n
+ext\\dist\\build\\webpack\\pl
+ugins\\wellknown-errors-plugi
+n\\parseCss.js:24:16)\n    at
+ getModuleBuildError (C:\\Use
+rs\\keike\\OneDrive\\g\\ignit
+era\\node_modules\\next\\dist
+\\build\\webpack\\plugins\\we
+llknown-errors-plugin\\webpac
+kModuleError.js:114:43)\n    
+at process.processTicksAndRej
+ections (node:internal/proces
+s/task_queues:103:5)\n    at 
+async C:\\Users\\keike\\OneDr
+ive\\g\\ignitera\\node_module
+s\\next\\dist\\build\\webpack
+\\plugins\\wellknown-errors-p
+lugin\\index.js:29:49\n    at
+ async Promise.all (index 0)\
+n    at async C:\\Users\\keik
+e\\OneDrive\\g\\ignitera\\nod
+e_modules\\next\\dist\\build\
+\webpack\\plugins\\wellknown-
+errors-plugin\\index.js:27:21
+"},"gip":true,"scriptLoader":
+[]}</script></body></html>
+
+

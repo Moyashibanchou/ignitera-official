@@ -84,17 +84,28 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
                         transition={{ duration: 0.65, delay, times: [0, 0.15, 0.35, 0.55, 1], ease: "easeInOut" }}
                         onAnimationComplete={() => setHasIgnited(true)}
                     >
+                        {/* Glow Filter for Digital Flame */}
+                        <defs>
+                            <filter id="torch-glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
                         {/* Cel-shaded Flame */}
-                        <g className={hasIgnited ? "cel-flame-anim" : ""}>
+                        <g className={hasIgnited ? "cel-flame-anim" : ""} filter="url(#torch-glow)">
                             {/* Ambient flat glow */}
-                            <circle cx="32" cy="24" r="18" fill="#FF3300" opacity="0.15" />
+                            <circle cx="32" cy="24" r="18" fill="#FF4D00" opacity="0.4" />
 
                             {/* Outer Flame (Strong Red-Orange) */}
                             <path d="M32 32 C12 32 14 10 26 2 C22 14 30 16 34 0 C38 10 52 14 42 24 C46 22 48 26 46 28 C44 32 38 32 32 32Z" fill="#ff4d00" />
                             {/* Mid Flame (Bright Orange) */}
-                            <path d="M32 32 C20 32 24 16 28 8 C26 16 32 16 33 4 C35 12 42 16 38 24 C40 22 42 26 40 28 C38 32 36 32 32 32Z" fill="#ff9900" />
+                            <path d="M32 32 C20 32 24 16 28 8 C26 16 32 16 33 4 C35 12 42 16 38 24 C40 22 42 26 40 28 C38 32 36 32 32 32Z" fill="#ff7d3f" />
                             {/* Core Flame (Yellow/White) */}
-                            <path d="M32 32 C26 32 28 20 31 12 C30 16 32 16 32 8 C33 12 36 16 34 24 C36 24 34 32 32 32Z" fill="#ffea00" />
+                            <path d="M32 32 C26 32 28 20 31 12 C30 16 32 16 32 8 C33 12 36 16 34 24 C36 24 34 32 32 32Z" fill="#ffffff" />
                         </g>
 
                         {/* Hand-drawn style embers */}
