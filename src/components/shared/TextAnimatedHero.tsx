@@ -29,7 +29,7 @@ export default function TextAnimatedHero() {
 
     return (
         <motion.h1
-            className="text-5xl md:text-7xl font-normal tracking-tight leading-tight mb-8 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+            className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-tight mb-8 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]"
             variants={container}
             initial="hidden"
             whileInView="show"

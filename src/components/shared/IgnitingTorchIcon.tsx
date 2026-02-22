@@ -108,16 +108,17 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
                             <path d="M32 32 C26 32 28 20 31 12 C30 16 32 16 32 8 C33 12 36 16 34 24 C36 24 34 32 32 32Z" fill="#ffffff" />
                         </g>
 
-                        {/* Hand-drawn style embers */}
+                        {/* Hand-drawn style embers - Optimized for mobile performance */}
                         {hasIgnited && [
-                            { x: 30, y: 26, r: 2.0, delay: '0s', dur: '1.2s', anim: 'cel-ember-1' },
-                            { x: 34, y: 28, r: 1.5, delay: '0.3s', dur: '1.5s', anim: 'cel-ember-2' },
-                            { x: 28, y: 24, r: 2.2, delay: '0.6s', dur: '1.1s', anim: 'cel-ember-1' },
-                            { x: 32, y: 22, r: 1.8, delay: '0.9s', dur: '1.3s', anim: 'cel-ember-2' },
+                            { x: 30, y: 26, r: 2.0, delay: '0s', dur: '1.2s', anim: 'cel-ember-1', className: '' },
+                            { x: 34, y: 28, r: 1.5, delay: '0.3s', dur: '1.5s', anim: 'cel-ember-2', className: 'hidden md:block' },
+                            { x: 28, y: 24, r: 2.2, delay: '0.6s', dur: '1.1s', anim: 'cel-ember-1', className: '' },
+                            { x: 32, y: 22, r: 1.8, delay: '0.9s', dur: '1.3s', anim: 'cel-ember-2', className: 'hidden md:block' },
                         ].map((ember, i) => (
                             <circle
                                 key={`ember-${i}`}
                                 cx={ember.x} cy={ember.y} r={ember.r} fill="#ff9900"
+                                className={ember.className}
                                 style={{
                                     animation: `${ember.anim} ${ember.dur} infinite`,
                                     animationDelay: ember.delay
