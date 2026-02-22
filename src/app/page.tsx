@@ -65,15 +65,68 @@ export default function Home() {
                     </div>
                 </FadeIn>
 
-                <div>
+                <div className="px-4 md:px-0">
                     <TextAnimatedHero />
                 </div>
 
                 <FadeIn delay={0.4}>
-                    <p className="text-xl md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed mt-4">
+                    <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed mt-4 px-4 md:px-0">
                         「学歴・ガクチカ・面接」から「データ・証明・信頼」へ。<br />
                         評価基準のパラダイムを変革する。
                     </p>
+                </FadeIn>
+
+                {/* Dual Entrance CTAs */}
+                <FadeIn delay={0.6} className="w-full px-4 md:px-0">
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center mt-12 w-full max-w-md mx-auto md:max-w-none">
+                        <a href="#" className="w-full md:w-auto px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white rounded-full font-medium transition-all duration-300 shadow-[0_0_20px_rgba(255,77,0,0.4)] hover:shadow-[0_0_30px_rgba(255,77,0,0.8)] text-center text-sm tracking-wide">
+                            For Students / 学生の方へ
+                        </a>
+                        <a href="#" className="w-full md:w-auto px-8 py-4 bg-white/[0.03] backdrop-blur-md border border-white/20 hover:border-blue-400/80 hover:bg-blue-900/10 text-white rounded-full font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] text-center text-sm tracking-wide shadow-lg">
+                            For Companies / 企業の方へ
+                        </a>
+                    </div>
+                </FadeIn>
+
+                {/* Dashboard Wireframe Placeholder */}
+                <FadeIn delay={0.8} className="w-full mt-24 px-4 md:px-12">
+                    <div className="w-full max-w-5xl mx-auto relative group">
+                        {/* Background Ambient Glow */}
+                        <div className="absolute inset-x-10 inset-y-0 bg-gradient-to-b from-ignitera-500/20 to-transparent blur-3xl opacity-40 transition-opacity duration-700 group-hover:opacity-60" />
+
+                        <div className="relative w-full aspect-[4/3] md:aspect-[21/9] bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col hover:border-white/20 transition-colors duration-500">
+                            {/* Window Header */}
+                            <div className="h-10 border-b border-white/10 flex items-center px-4 gap-2 bg-black/40">
+                                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700/50" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700/50" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700/50" />
+                                <div className="ml-2 md:ml-4 text-[10px] text-zinc-500 font-mono flex-1 text-center pr-10 truncate">
+                                    app.ignitera.io/dev_environment
+                                </div>
+                            </div>
+                            {/* Dashboard Wireframe Content */}
+                            <div className="flex-1 p-6 relative flex flex-col items-center justify-center overflow-hidden">
+                                {/* Grid Background */}
+                                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
+                                <div className="relative z-10 text-center">
+                                    <h3 className="text-lg md:text-3xl font-medium text-white tracking-widest uppercase mb-4 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] glow-text">
+                                        Dashboard UI in Development
+                                    </h3>
+                                    <p className="text-zinc-500 font-mono text-xs md:text-sm">Target Launch: 2026 Q3</p>
+                                </div>
+
+                                {/* Abstract blurred shapes mimicking charts */}
+                                <div className="absolute bottom-10 left-10 w-[40%] h-[30%] bg-[#4285F4]/10 blur-3xl rounded-full" />
+                                <div className="absolute top-10 right-10 w-[50%] h-[40%] bg-[#FF4D00]/10 blur-3xl rounded-full" />
+
+                                {/* Fake UI blocks */}
+                                <div className="absolute top-10 left-10 w-32 md:w-48 h-24 border border-white/5 bg-white/[0.01] rounded-lg hidden sm:block" />
+                                <div className="absolute bottom-10 right-10 w-48 md:w-64 h-32 border border-white/5 bg-white/[0.01] rounded-lg hidden sm:block" />
+                                <div className="absolute bottom-10 left-1/4 w-24 h-40 border border-white/5 bg-white/[0.01] rounded-lg hidden sm:block" />
+                            </div>
+                        </div>
+                    </div>
                 </FadeIn>
             </section>
 

@@ -21,7 +21,7 @@ export default function RoadmapSection() {
         <section className="py-32 px-6 bg-[#050505] overflow-hidden border-t border-white/5 relative" ref={containerRef}>
             <div className="absolute inset-0 opacity-[0.2]" style={{ backgroundImage: "radial-gradient(#27272a 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
 
-            <div className="max-w-4xl mx-auto relative z-10">
+            <div className="max-w-6xl mx-auto relative z-10 px-4">
                 <div className="text-center mb-20">
                     <h2 className="text-3xl md:text-5xl font-medium mb-6 tracking-tight text-white glow-text">
                         IGNITERA Process
@@ -33,7 +33,7 @@ export default function RoadmapSection() {
                     </p>
                 </div>
 
-                <div className="relative">
+                <div className="relative flex flex-col md:flex-row md:items-start md:justify-between w-full mt-12 gap-0 md:gap-4">
                     {/* SVG Definitions for Glow Effects */}
                     <svg width="0" height="0" className="absolute">
                         <defs>
@@ -57,12 +57,12 @@ export default function RoadmapSection() {
                         const nodeStartTime = i * PHASE_INTERVAL;
 
                         return (
-                            <div key={phase.id} className="relative flex items-start group">
+                            <div key={phase.id} className="relative flex flex-row md:flex-col items-start group flex-1">
                                 {/* タイムラインの線とノードのコンテナ */}
-                                <div className="relative flex flex-col items-center mr-8 md:mr-12 shrink-0 h-full">
+                                <div className="relative flex flex-col md:flex-row items-center w-auto mr-6 md:mr-0 md:mb-6 shrink-0 h-full md:h-auto md:w-full">
 
                                     {/* ノード */}
-                                    <div className="relative z-10 flex items-center justify-center w-12 h-12">
+                                    <div className="relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
                                         {/* ベースのノード */}
                                         <div className="absolute w-4 h-4 rounded-full bg-[#1A1A1A] border border-white/20" />
 
@@ -85,34 +85,54 @@ export default function RoadmapSection() {
 
                                     {/* ファイバーオプティックライン */}
                                     {!isLast && (
-                                        <div className="relative w-[2px] h-32 md:h-40 bg-white/5 overflow-hidden my-1">
-                                            {isInView && (
-                                                <motion.div
-                                                    className="w-full h-[50px] bg-gradient-to-b from-transparent via-ignitera-500 to-transparent blur-[2px]"
-                                                    initial={{ top: "-50px" }}
-                                                    animate={{ top: "100%" }}
-                                                    transition={{
-                                                        duration: LINE_DURATION,
-                                                        delay: nodeStartTime + NODE_DURATION,
-                                                        ease: "linear",
-                                                    }}
-                                                    style={{ position: 'absolute' }}
-                                                />
-                                            )}
-                                        </div>
+                                        <>
+                                            {/* スマホ用（縦線） */}
+                                            <div className="relative w-[2px] h-24 md:hidden bg-white/5 overflow-hidden my-2">
+                                                {isInView && (
+                                                    <motion.div
+                                                        className="w-full h-[50px] bg-gradient-to-b from-transparent via-ignitera-500 to-transparent blur-[2px]"
+                                                        initial={{ top: "-50px" }}
+                                                        animate={{ top: "100%" }}
+                                                        transition={{
+                                                            duration: LINE_DURATION,
+                                                            delay: nodeStartTime + NODE_DURATION,
+                                                            ease: "linear",
+                                                        }}
+                                                        style={{ position: 'absolute' }}
+                                                    />
+                                                )}
+                                            </div>
+
+                                            {/* PC用（横線） */}
+                                            <div className="hidden md:block relative h-[2px] w-full bg-white/5 overflow-hidden mx-4 flex-1">
+                                                {isInView && (
+                                                    <motion.div
+                                                        className="h-full w-[100px] bg-gradient-to-r from-transparent via-ignitera-500 to-transparent blur-[2px]"
+                                                        initial={{ left: "-100px" }}
+                                                        animate={{ left: "100%" }}
+                                                        transition={{
+                                                            duration: LINE_DURATION,
+                                                            delay: nodeStartTime + NODE_DURATION,
+                                                            ease: "linear",
+                                                        }}
+                                                        style={{ position: 'absolute' }}
+                                                    />
+                                                )}
+                                            </div>
+                                        </>
                                     )}
                                 </div>
 
-                                {/* テキストコンテンツ (右側) */}
+                                {/* テキストコンテンツ */}
                                 <motion.div
-                                    className="pb-12 md:pb-16 pt-1"
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                                    className="pb-12 md:pb-0 pt-2 md:pt-0 md:pr-6"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
                                     transition={{ duration: 0.5, delay: nodeStartTime + 0.1, ease: "easeOut" }}
                                 >
                                     <p className="text-xs font-mono text-ignitera-500 uppercase tracking-widest mb-2">Phase {phase.id}</p>
-                                    <h3 className="text-xl md:text-2xl font-medium text-white mb-4">{phase.title}</h3>
-                                    <p className="text-zinc-400 font-light leading-relaxed max-w-2xl group-hover:text-zinc-300 transition-colors">
+                                    <h3 className="text-xl lg:text-2xl font-medium text-white mb-3 md:mb-4 pr-4">{phase.title}</h3>
+                                    <p className="text-sm text-zinc-400 font-light leading-relaxed group-hover:text-zinc-300 transition-colors pr-2">
                                         {phase.desc}
                                     </p>
                                 </motion.div>
