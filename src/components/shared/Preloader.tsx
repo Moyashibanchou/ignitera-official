@@ -3,159 +3,240 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const textLogs = [
-    "> FETCHING BEHAVIOR LOGS...",
-    "> ANALYZING 4-LAYER METRICS...",
-    "> OPTIMIZING EVALUATION DATA...",
-    "> CALIBRATING IGNITION CORE...",
-    "> SYNCING COMPLETE."
-];
-
 export default function Preloader() {
     const [isVisible, setIsVisible] = useState(true);
     const [phase, setPhase] = useState(0);
-    const [textIndex, setTextIndex] = useState(0);
+    const [freq, setFreq] = useState("140.15");
+    const [text1, setText1] = useState("");
+    const [text2, setText2] = useState("");
+    const [text3, setText3] = useState("");
 
-    // Phase 0: HUD Grid & Nodes (0s - 1s)
-    // Phase 1: High speed parsing (1s - 2.2s)
-    // Phase 2: SYSTEM ONLINE (2.2s - 3s)
-    // Hide: Preloader exits at 3s
+    // Phase 0: 0s - 1.5s (CALLING..., updating frequency)
+    // Phase 1: 1.5s - 2.0s (CONNECTION SECURED pause)
+    // Phase 2: 2.0s - 4.0s (Audio Waveform, Typewriter text, Dialog box)
+    // Phase 3: 4.0s - 4.5s (CRT power off transition)
 
     useEffect(() => {
-        const t1 = setTimeout(() => setPhase(1), 1000);
-        const t2 = setTimeout(() => setPhase(2), 2200);
-        const t3 = setTimeout(() => setIsVisible(false), 3000);
-
-        return () => {
-            clearTimeout(t1);
-            clearTimeout(t2);
-            clearTimeout(t3);
-        };
+        const t1 = setTimeout(() => setPhase(1), 1500);
+        const t2 = setTimeout(() => setPhase(2), 2000);
+        const t3 = setTimeout(() => setPhase(3), 4000);
+        const t4 = setTimeout(() => setIsVisible(false), 4500);
+        return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
     }, []);
 
+    // Frequency randomizer
     useEffect(() => {
-        if (phase === 1) {
+        if (phase === 0) {
             const interval = setInterval(() => {
-                setTextIndex((prev) => Math.min(prev + 1, textLogs.length - 1));
-            }, 250);
+                const randomFreq = (140 + Math.random() * 2).toFixed(2);
+                setFreq(randomFreq);
+            }, 60);
             return () => clearInterval(interval);
+        } else {
+            setFreq("140.85");
+        }
+    }, [phase]);
+
+    // Typewriter
+    useEffect(() => {
+        if (phase >= 2) {
+            const msg1 = "> TARGET: THE OLD MODEL.";
+            const msg2 = "> EVALUATION ENGINE: ONLINE.";
+            const msg3 = "> MISSION START.";
+
+            let i1 = 0; let i2 = 0; let i3 = 0;
+            const typeInterval = setInterval(() => {
+                if (i1 < msg1.length) {
+                    setText1(msg1.slice(0, i1 + 1));
+                    i1++;
+                } else if (i2 < msg2.length) {
+                    setText2(msg2.slice(0, i2 + 1));
+                    i2++;
+                } else if (i3 < msg3.length) {
+                    setText3(msg3.slice(0, i3 + 1));
+                    i3++;
+                } else {
+                    clearInterval(typeInterval);
+                }
+            }, 30);
+            return () => clearInterval(typeInterval);
         }
     }, [phase]);
 
     return (
         <AnimatePresence>
             {isVisible && (
-                <motion.div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-transparent pointer-events-none"
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1.2, ease: "easeInOut", delay: 0.2 }}
+                <div
+                    className="fixed inset-0 z-[100] w-screen h-screen bg-black flex flex-col items-center justify-center font-mono pointer-events-none overflow-hidden"
+                    style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Space Mono', monospace" }}
                 >
-                    {/* Top Top Split Door for scanning line effect */}
-                    <motion.div
-                        className="absolute top-0 left-0 w-full bg-[#030303]/95 backdrop-blur-[20px] border-b border-ignitera-500/20"
-                        initial={{ height: "50%" }}
-                        exit={{ height: "0%", opacity: 0 }}
-                        transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
-                    />
-                    {/* Bottom Split Door */}
-                    <motion.div
-                        className="absolute bottom-0 left-0 w-full bg-[#030303]/95 backdrop-blur-[20px] border-t border-ignitera-500/20"
-                        initial={{ height: "50%" }}
-                        exit={{ height: "0%", opacity: 0 }}
-                        transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
-                    />
+                    <AnimatePresence>
+                        {phase < 3 && (
+                            <motion.div
+                                className="absolute inset-0 w-full h-full flex flex-col items-center justify-center"
+                                // CRT Power-off Exit
+                                exit={{
+                                    scaleY: [1, 0.005, 0.005, 0],
+                                    scaleX: [1, 1, 0, 0],
+                                    opacity: [1, 1, 1, 0],
+                                    filter: ["brightness(1)", "brightness(2)", "brightness(3)", "brightness(0)"]
+                                }}
+                                transition={{ duration: 0.5, times: [0, 0.3, 0.7, 1], ease: "easeInOut" }}
+                                style={{ transformOrigin: "center" }}
+                            >
+                                {/* Background Noise & Vignette */}
+                                <div
+                                    className="absolute inset-0 opacity-[0.05] mix-blend-screen"
+                                    style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}
+                                />
+                                <div
+                                    className="absolute inset-0"
+                                    style={{ background: "radial-gradient(circle at center point, transparent 30%, #000 100%)" }}
+                                />
 
-                    {/* SVG HUD Grid & Lines */}
-                    <motion.svg className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen" xmlns="http://www.w3.org/2000/svg">
-                        {/* Base Hexagon Grid */}
-                        <polygon
-                            points="50,0 100,25 100,75 50,100 0,75 0,25"
-                            className="stroke-zinc-800"
-                            fill="none" strokeWidth="0.5"
-                            style={{ transform: "translate(calc(50vw - 150px), calc(50vh - 150px)) scale(3)" }}
-                        />
-                        <polygon
-                            points="50,0 100,25 100,75 50,100 0,75 0,25"
-                            className="stroke-zinc-800"
-                            fill="none" strokeWidth="0.5"
-                            style={{ transform: "translate(calc(50vw - 250px), calc(50vh - 250px)) scale(5)" }}
-                        />
+                                {/* Subtle Scanline Grid background */}
+                                <div
+                                    className="absolute inset-0 opacity-10"
+                                    style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, #00FF41 2px, #00FF41 3px)" }}
+                                />
 
-                        {/* Animated Glowing Hexagon Path */}
-                        <motion.polygon
-                            points="50,0 100,25 100,75 50,100 0,75 0,25"
-                            stroke="#FF4D00"
-                            fill="none" strokeWidth="2"
-                            strokeDasharray="100 300"
-                            initial={{ strokeDashoffset: 400 }}
-                            animate={{ strokeDashoffset: phase >= 1 ? 0 : 400 }}
-                            transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-                            style={{ transform: "translate(calc(50vw - 150px), calc(50vh - 150px)) scale(3)" }}
-                        />
-
-                        {/* Data Nodes */}
-                        <circle cx="calc(50vw)" cy="calc(50vh - 150px)" r="3" fill="#FF4D00" className="animate-pulse shadow-[0_0_10px_#FF4D00]" />
-                        <circle cx="calc(50vw - 130px)" cy="calc(50vh + 75px)" r="2.5" fill="#FF4D00" className="animate-pulse shadow-[0_0_10px_#FF4D00]" style={{ animationDelay: '0.3s' }} />
-                        <circle cx="calc(50vw + 130px)" cy="calc(50vh + 75px)" r="2.5" fill="#FF4D00" className="animate-pulse shadow-[0_0_10px_#FF4D00]" style={{ animationDelay: '0.7s' }} />
-                        <circle cx="calc(50vw)" cy="calc(50vh)" r="1.5" fill="#FF4D00" opacity="0.5" />
-
-                        {/* Horizontal scanning lines */}
-                        <motion.line
-                            x1="0" y1="50vh" x2="100vw" y2="50vh"
-                            stroke="#FF4D00" strokeWidth="1" opacity="0.2"
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1 }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                        />
-                    </motion.svg>
-
-                    {/* Central HUD Content */}
-                    <div className="relative z-10 flex flex-col items-center justify-center h-20 w-full px-6 mix-blend-screen">
-                        <AnimatePresence mode="wait">
-                            {phase === 0 && (
-                                <motion.p
-                                    key="booting"
-                                    className="font-mono text-zinc-500 text-xs md:text-sm tracking-[0.2em] text-center"
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, filter: "blur(4px)" }}
-                                    transition={{ duration: 0.4 }}
-                                >
-                                    [ INITIATING SECURE CONNECTION... ]
-                                </motion.p>
-                            )}
-
-                            {phase === 1 && (
+                                {/* Moving Laser Scanline */}
                                 <motion.div
-                                    key="parsing"
-                                    className="font-mono text-orange-500 text-xs md:text-sm tracking-[0.1em] text-center w-full max-w-md text-left pl-8 md:pl-0 border-l-2 border-orange-500/50"
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, filter: "blur(4px)" }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <p className="opacity-50 text-[10px] mb-1">DATA STREAM // PORT 4096</p>
-                                    <p className="drop-shadow-[0_0_8px_rgba(255,77,0,0.8)]">{textLogs[textIndex]}</p>
-                                </motion.div>
-                            )}
+                                    className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#00FF41]/40 to-transparent mix-blend-screen shadow-[0_0_15px_rgba(0,255,65,0.6)]"
+                                    animate={{ top: ["-10%", "110%"] }}
+                                    transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+                                />
 
-                            {phase === 2 && (
-                                <motion.div
-                                    key="online"
-                                    className="font-mono text-white text-xl md:text-4xl tracking-[0.3em] font-bold text-center drop-shadow-[0_0_20px_rgba(255,77,0,1)] flex items-center gap-4"
-                                    initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-                                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                >
-                                    <div className="w-2 h-6 md:h-10 bg-orange-500 mt-0.5" />
-                                    [ SYSTEM ONLINE ]
-                                    <div className="w-2 h-6 md:h-10 bg-orange-500 mt-0.5" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-                </motion.div>
+                                {/* Main UI Container */}
+                                <div className="relative z-10 w-full max-w-5xl px-4 flex flex-col h-full justify-center md:h-auto gap-8">
+
+                                    {/* Top Info Bar (CALLING / SECURED small indicators) */}
+                                    <div className="flex justify-between items-center w-full px-4 text-[#00FF41]">
+                                        <div className="text-[10px] md:text-sm tracking-widest opacity-60">
+                                            SECURE COMM CHANNEL
+                                        </div>
+                                        {phase === 0 ? (
+                                            <motion.div
+                                                className="text-[10px] md:text-xs font-bold tracking-widest text-red-500 flex items-center gap-2 border border-red-500/30 px-2 py-1 bg-red-500/10 shadow-[0_0_10px_rgba(239,68,68,0.4)]"
+                                                animate={{ opacity: [1, 0, 1] }}
+                                                transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
+                                            >
+                                                <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
+                                                CALLING...
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div
+                                                className="text-[10px] md:text-xs font-bold tracking-widest text-[#FF4D00] flex items-center gap-2 border border-[#FF4D00]/50 px-2 py-1 bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.6)]"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                            >
+                                                <div className="w-1.5 h-1.5 bg-[#FF4D00] rounded-full" />
+                                                CONNECTION SECURED
+                                            </motion.div>
+                                        )}
+                                    </div>
+
+                                    {/* 3 Columns Layout: Portratis + Center Freq */}
+                                    <div className="grid grid-cols-3 gap-4 md:gap-8 items-center h-48 md:h-64 mt-4">
+
+                                        {/* Left Portrait: Behavior Logs */}
+                                        <div className="flex flex-col items-center justify-center h-full border border-[#00FF41]/20 bg-[#00FF41]/[0.02] relative overflow-hidden group">
+                                            {/* Portrait Noise Overlay */}
+                                            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 1px, #00FF41 1px, #00FF41 2px)", backgroundSize: "100% 3px" }} />
+                                            <div className="text-[10px] absolute top-1 left-2 text-[#00FF41]/60 tracking-widest">SRC: BEHAVIOR_LOGS</div>
+
+                                            {/* Wireframe Mesh */}
+                                            <svg width="80" height="80" viewBox="0 0 100 100" className="opacity-80 drop-shadow-[0_0_8px_rgba(0,255,65,0.8)] relative z-10">
+                                                <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="#00FF41" strokeWidth="1" />
+                                                <polygon points="50,25 75,40 75,60 50,75 25,60 25,40" fill="none" stroke="#00FF41" strokeWidth="0.5" strokeDasharray="2 2" />
+                                                <line x1="50" y1="10" x2="50" y2="90" stroke="#00FF41" strokeWidth="0.5" />
+                                                <line x1="10" y1="30" x2="90" y2="70" stroke="#00FF41" strokeWidth="0.5" />
+                                                <line x1="10" y1="70" x2="90" y2="30" stroke="#00FF41" strokeWidth="0.5" />
+                                                <circle cx="50" cy="50" r="4" fill="#00FF41" />
+                                            </svg>
+                                        </div>
+
+                                        {/* Center: FREQ & Waveform */}
+                                        <div className="flex flex-col items-center justify-center h-full gap-4">
+                                            {/* Giant Frequency */}
+                                            <motion.div
+                                                className="text-[#00FF41] text-4xl md:text-7xl font-bold tracking-[0.1em] md:tracking-[0.2em]"
+                                                animate={phase === 1 ? {
+                                                    color: ["#fff", "#FF4D00"],
+                                                    textShadow: ["0 0 30px #fff", "0 0 20px #FF4D00"]
+                                                } : { textShadow: "0 0 15px rgba(0,255,65,0.8)" }}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                {freq}
+                                            </motion.div>
+
+                                            {/* Audio Waveform connecting left to right */}
+                                            <div className="flex items-center justify-center gap-[2px] w-full h-12 md:h-16 px-4">
+                                                {phase >= 1 && Array.from({ length: 40 }).map((_, i) => (
+                                                    <motion.div
+                                                        key={`wave-${i}`}
+                                                        className={`w-[2px] md:w-[3px] ${phase === 1 ? "bg-[#FF4D00]" : "bg-[#00FF41]"} shadow-[0_0_5px_currentColor]`}
+                                                        initial={{ height: "2px" }}
+                                                        animate={{
+                                                            height: phase === 1 ? ["2px", "100%", "2px"] : ["2px", `${15 + Math.random() * 85}%`, "2px"]
+                                                        }}
+                                                        transition={{
+                                                            duration: phase === 1 ? 0.4 : (0.15 + Math.random() * 0.2),
+                                                            repeat: Infinity,
+                                                            repeatType: "mirror"
+                                                        }}
+                                                    />
+                                                ))}
+                                                {phase === 0 && (
+                                                    <div className="w-full h-[2px] bg-[#00FF41]/30 shadow-[0_0_5px_#00FF41]" />
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Right Portrait: Ignitera Engine */}
+                                        <div className="flex flex-col items-center justify-center h-full border border-[#FF4D00]/20 bg-[#FF4D00]/[0.02] relative overflow-hidden group">
+                                            {/* Portrait Noise Overlay */}
+                                            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 1px, #FF4D00 1px, #FF4D00 2px)", backgroundSize: "100% 3px" }} />
+                                            <div className="text-[10px] absolute top-1 right-2 text-[#FF4D00]/60 tracking-widest">DEST: IGNITERA_ENG</div>
+
+                                            {/* Wireframe Flame/Core */}
+                                            <svg width="80" height="80" viewBox="0 0 100 100" className="opacity-80 drop-shadow-[0_0_8px_rgba(255,77,0,0.8)] relative z-10">
+                                                <path d="M50 10 C40 30, 20 50, 20 70 C20 85, 35 95, 50 95 C65 95, 80 85, 80 70 C80 50, 60 30, 50 10 Z" fill="none" stroke="#FF4D00" strokeWidth="1.5" />
+                                                <circle cx="50" cy="70" r="15" fill="none" stroke="#FF4D00" strokeWidth="1" strokeDasharray="4 2" />
+                                                <circle cx="50" cy="70" r="5" fill="#FF4D00" className="animate-pulse" />
+                                                <line x1="50" y1="10" x2="50" y2="55" stroke="#FF4D00" strokeWidth="0.5" />
+                                                <line x1="20" y1="70" x2="80" y2="70" stroke="#FF4D00" strokeWidth="0.5" />
+                                            </svg>
+                                        </div>
+
+                                    </div>
+
+                                    {/* Bottom Dialogue Box */}
+                                    <div className="w-full h-32 md:h-40 border border-[#00FF41]/40 bg-[#00FF41]/[0.03] p-4 md:p-6 relative mt-4 shadow-[inset_0_0_20px_rgba(0,255,65,0.05),_0_0_15px_rgba(0,255,65,0.1)]">
+                                        {/* Decorative frame elements */}
+                                        <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#00FF41]" />
+                                        <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[#00FF41]" />
+                                        <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#00FF41]" />
+                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#00FF41]" />
+
+                                        <div className="flex flex-col items-start justify-start w-full h-full text-xs md:text-lg font-medium tracking-[0.2em] leading-relaxed">
+                                            <p className="text-[#00FF41] drop-shadow-[0_0_8px_rgba(0,255,65,0.8)]">{text1}</p>
+                                            <p className="text-[#00FF41] drop-shadow-[0_0_8px_rgba(0,255,65,0.8)]">{text2}</p>
+                                            <motion.p
+                                                className="text-[#FF4D00] drop-shadow-[0_0_12px_rgba(255,77,0,0.9)] mt-2"
+                                                animate={text3.length > 5 ? { opacity: [1, 0.5, 1] } : {}}
+                                                transition={{ duration: 0.1, repeat: Infinity }}
+                                            >
+                                                {text3}
+                                            </motion.p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             )}
         </AnimatePresence>
     );
