@@ -55,7 +55,7 @@ export default function Home() {
 
     useEffect(() => {
         // Only run on initial load
-        const timer = setTimeout(() => setShowPreloader(false), 5000);
+        const timer = setTimeout(() => setShowPreloader(false), 3000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -64,9 +64,9 @@ export default function Home() {
             {showPreloader && <Preloader />}
             <motion.main
                 className="min-h-screen bg-transparent relative text-zinc-300 font-sans selection:bg-ignitera-500 selection:text-white"
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut", delay: 4.2 }}
+                initial={{ opacity: 0, scale: 1.02, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 2.2 }}
             >
                 <AnimatedBackground />
                 <style>{`
