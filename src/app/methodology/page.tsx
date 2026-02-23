@@ -1,7 +1,6 @@
 import FadeIn from "@/components/shared/FadeIn";
 import AdvancedStatusBoard from "@/components/methodology/AdvancedStatusBoard";
 import ProprietaryEngineCore from "@/components/methodology/ProprietaryEngineCore";
-import IntegrationsMarquee from "@/components/methodology/IntegrationsMarquee";
 
 export default function MethodologyPage() {
     return (
@@ -37,7 +36,6 @@ export default function MethodologyPage() {
 
                 {/* Visual Blackbox UI replaces explicit Data Arch & Math */}
                 <FadeIn delay={0.2}>
-                    <IntegrationsMarquee />
                     <ProprietaryEngineCore />
                 </FadeIn>
             </div>
