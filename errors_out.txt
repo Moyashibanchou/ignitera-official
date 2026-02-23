@@ -1,0 +1,9 @@
+Loading methodology...
+CONSOLE_ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)
+CONSOLE_ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)
+CONSOLE_ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)
+CONSOLE_ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)
+CONSOLE_ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)
+Status: 200
+Methodology load complete.
+Taking screenshot...
