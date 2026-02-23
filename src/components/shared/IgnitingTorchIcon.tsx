@@ -55,10 +55,14 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
                 {isLit && (
                     <motion.g
                         style={{ transformOrigin: '32px 32px' }}
-                        initial={{ opacity: 0, scale: 0.2 }}
-                        whileInView={{ opacity: [0, 1, 0], scale: [0.5, 2.0, 2.5] }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: 0.35, delay: delay, ease: "easeOut" }}
+                        variants={{
+                            hidden: { opacity: 0, scale: 0.2 },
+                            visible: {
+                                opacity: [0, 1, 0],
+                                scale: [0.5, 2.0, 2.5],
+                                transition: { duration: 0.35, delay: delay, ease: "easeOut" }
+                            }
+                        }}
                     >
                         {/* 8 radial burst lines */}
                         {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
@@ -78,11 +82,17 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
                 {isLit && (
                     <motion.g
                         style={{ transformOrigin: '32px 32px' }}
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileInView={{ scale: [0, 2.0, 0.9, 1.1, 1], opacity: [0, 1, 1, 1, 1] }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: 0.65, delay, times: [0, 0.15, 0.35, 0.55, 1], ease: "easeInOut" }}
-                        onAnimationComplete={() => setHasIgnited(true)}
+                        variants={{
+                            hidden: { scale: 0, opacity: 0 },
+                            visible: {
+                                scale: [0, 2.0, 0.9, 1.1, 1],
+                                opacity: [0, 1, 1, 1, 1],
+                                transition: { duration: 0.65, delay: delay, times: [0, 0.15, 0.35, 0.55, 1], ease: "easeInOut" }
+                            }
+                        }}
+                        onAnimationComplete={(definition) => {
+                            if (definition === "visible") setHasIgnited(true);
+                        }}
                     >
                         {/* Glow Filter for Digital Flame */}
                         <defs>
