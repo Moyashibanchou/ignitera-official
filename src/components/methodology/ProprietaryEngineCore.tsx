@@ -128,12 +128,13 @@ export default function ProprietaryEngineCore() {
 
             </div>
 
-            <style>{`
+            <style dangerouslySetInnerHTML={{
+                __html: `
                 .mask-image-to-r {
                     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
                     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
                 }
-            `}</style>
+            ` }} />
         </section>
     );
 }
