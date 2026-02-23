@@ -1,18 +1,21 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function ProprietaryEngineCore() {
-    // Generate random input nodes for the left side
-    const inputNodes = useMemo(() => Array.from({ length: 40 }).map((_, i) => ({
-        id: i,
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 10}%`,
-        delay: Math.random() * 2,
-        duration: 1.5 + Math.random() * 2,
-        size: Math.random() * 3 + 1,
-    })), []);
+    const [inputNodes, setInputNodes] = useState<{ id: number, top: string, left: string, delay: number, duration: number, size: number }[]>([]);
+
+    useEffect(() => {
+        setInputNodes(Array.from({ length: 40 }).map((_, i) => ({
+            id: i,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 10}%`,
+            delay: Math.random() * 2,
+            duration: 1.5 + Math.random() * 2,
+            size: Math.random() * 3 + 1,
+        })));
+    }, []);
 
     return (
         <section className="mt-32 mb-40 relative px-4 text-center">
