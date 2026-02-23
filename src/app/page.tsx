@@ -7,6 +7,7 @@ import React from "react";
 import IgnitingTorchIcon from "@/components/shared/IgnitingTorchIcon";
 import RoadmapSection from "@/components/landing/RoadmapSection";
 import { motion } from "framer-motion";
+import Preloader from "@/components/shared/Preloader";
 
 const AnimatedBackground = () => (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#050505]">
@@ -45,9 +46,17 @@ const GlassCard = ({ children, isPrimary = false }: { children: React.ReactNode,
     );
 };
 
+
+
 export default function Home() {
     return (
-        <main className="min-h-screen bg-transparent relative text-zinc-300 font-sans selection:bg-ignitera-500 selection:text-white">
+        <motion.main
+            className="min-h-screen bg-transparent relative text-zinc-300 font-sans selection:bg-ignitera-500 selection:text-white"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 2.8 }}
+        >
+            <Preloader />
             <AnimatedBackground />
             <style>{`
                 @keyframes trace { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
@@ -190,6 +199,6 @@ export default function Home() {
                     </FadeIn>
                 </div>
             </section>
-        </main>
+        </motion.main>
     );
 }
