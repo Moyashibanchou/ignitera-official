@@ -217,28 +217,19 @@ export default function Home() {
                                     >
                                         <motion.li
                                             className="flex flex-col md:flex-row items-center gap-3"
-                                            variants={{
-                                                hidden: { opacity: 0, scale: 0.5, y: 20 },
-                                                visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 15 } }
-                                            }}
+                                            variants={{ hidden: {}, visible: {} }}
                                         >
                                             <IgnitingTorchIcon isLit={true} /> <span className="pt-0.5 font-medium text-white text-center md:text-left">プロジェクト実行ログ</span>
                                         </motion.li>
                                         <motion.li
                                             className="flex flex-col md:flex-row items-center gap-3"
-                                            variants={{
-                                                hidden: { opacity: 0, scale: 0.5, y: 20 },
-                                                visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 15 } }
-                                            }}
+                                            variants={{ hidden: {}, visible: {} }}
                                         >
                                             <IgnitingTorchIcon isLit={true} /> <span className="pt-0.5 font-medium text-white text-center md:text-left">継続的なスキル成長曲線</span>
                                         </motion.li>
                                         <motion.li
                                             className="flex flex-col md:flex-row items-center gap-3"
-                                            variants={{
-                                                hidden: { opacity: 0, scale: 0.5, y: 20 },
-                                                visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 15 } }
-                                            }}
+                                            variants={{ hidden: {}, visible: {} }}
                                         >
                                             <IgnitingTorchIcon isLit={true} /> <span className="pt-0.5 font-medium text-white text-center md:text-left">組織との文化適合スコア</span>
                                         </motion.li>
