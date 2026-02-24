@@ -19,36 +19,6 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
 
     return (
         <div className="relative shrink-0 flex items-center justify-center w-8 h-8 md:w-12 md:h-12 mr-2">
-
-            {/* Global or inline styles for the discrete cel-shaded animation */}
-            <style>{`
-                @keyframes cel-fire {
-                    0%, 24.99% { transform: scale(1, 1) skew(0deg) translate(0px, 0px); }
-                    25%, 49.99% { transform: scale(0.9, 1.15) skew(-6deg) translate(-1px, -2px); }
-                    50%, 74.99% { transform: scale(1.1, 0.9) skew(4deg) translate(1px, 1px); }
-                    75%, 99.99% { transform: scale(0.95, 1.1) skew(-3deg) translate(-1px, -1px); }
-                    100% { transform: scale(1, 1) skew(0deg) translate(0px, 0px); }
-                }
-                @keyframes cel-ember-1 {
-                    0%, 24.99% { transform: translate(0px, 0px) scale(1); opacity: 1; }
-                    25%, 49.99% { transform: translate(-4px, -15px) scale(0.8); opacity: 0.8; }
-                    50%, 74.99% { transform: translate(3px, -30px) scale(0.6); opacity: 0.6; }
-                    75%, 99.99% { transform: translate(-2px, -45px) scale(0.3); opacity: 0.3; }
-                    100% { transform: translate(0px, -60px) scale(0); opacity: 0; }
-                }
-                @keyframes cel-ember-2 {
-                    0%, 24.99% { transform: translate(0px, 0px) scale(1); opacity: 1; }
-                    25%, 49.99% { transform: translate(5px, -12px) scale(0.8); opacity: 0.8; }
-                    50%, 74.99% { transform: translate(-4px, -25px) scale(0.6); opacity: 0.6; }
-                    75%, 99.99% { transform: translate(3px, -38px) scale(0.3); opacity: 0.3; }
-                    100% { transform: translate(0px, -50px) scale(0); opacity: 0; }
-                }
-                .cel-flame-anim {
-                    animation: cel-fire 0.4s infinite;
-                    transform-origin: 32px 32px;
-                }
-            `}</style>
-
             <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-full h-full z-10 overflow-visible pointer-events-none">
 
                 {/* 1. Spark Burst (Comics Style) */}

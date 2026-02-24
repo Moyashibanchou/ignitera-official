@@ -28,17 +28,16 @@ export default function Preloader() {
             {isVisible && (
                 <motion.div
                     className="fixed inset-0 z-[100] w-screen h-screen flex flex-col items-center justify-center pointer-events-none"
-                    // Background morphs in phase 2 to reveal the page behind frosted glass
+                    // Background morphs in phase 2 to reveal the page behind
                     animate={{
                         backgroundColor: phase >= 2 ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,1)",
-                        backdropFilter: phase >= 2 ? "blur(12px)" : "blur(0px)",
                         opacity: phase >= 2 ? [1, 1, 0] : 1
                     }}
                     transition={{
                         backgroundColor: { duration: 0.8, ease: "easeInOut" },
-                        backdropFilter: { duration: 0.8, ease: "easeInOut" },
                         opacity: { duration: 1, ease: "easeOut", times: [0, 0.4, 1] }
                     }}
+                    style={{ backdropFilter: phase >= 2 ? "blur(12px)" : "blur(0px)" }}
                 >
                     <AnimatePresence>
                         {phase < 2 && (

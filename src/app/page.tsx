@@ -13,15 +13,11 @@ import { Link, Cpu, Sparkles } from "lucide-react";
 const AnimatedBackground = () => (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#050505]">
         {/* Glow Effects */}
-        <motion.div
-            className="absolute top-[-20%] left-[20%] w-[50vw] h-[50vw] rounded-full mix-blend-screen blur-[120px] opacity-[0.15] bg-ignitera-500"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        <div
+            className="absolute top-[-20%] left-[20%] w-[50vw] h-[50vw] rounded-full mix-blend-screen blur-[120px] opacity-[0.15] bg-ignitera-500 will-change-transform"
         />
-        <motion.div
-            className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] rounded-full mix-blend-screen blur-[150px] opacity-[0.1] bg-[#4285F4]"
-            animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.15, 0.1] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        <div
+            className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] rounded-full mix-blend-screen blur-[150px] opacity-[0.1] bg-[#4285F4] will-change-transform"
         />
         {/* Grid dots */}
         <div className="absolute inset-0 opacity-[0.2]"
@@ -70,13 +66,6 @@ export default function Home() {
                 transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 2.2 }}
             >
                 <AnimatedBackground />
-                <style>{`
-                @keyframes trace { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-                @keyframes trace-reverse { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-                @keyframes trace-y { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-                @keyframes trace-y-reverse { 0% { transform: translateY(100%); } 100% { transform: translateY(-100%); } }
-            `}</style>
-
                 {/* Hero Section */}
                 <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 max-w-5xl mx-auto">
                     <FadeIn>

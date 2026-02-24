@@ -24,3 +24,140 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Animations from page.tsx and IgnitingTorchIcon.tsx */
+@keyframes trace {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes trace-reverse {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes trace-y {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes trace-y-reverse {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes cel-fire {
+
+  0%,
+  24.99% {
+    transform: scale(1, 1) skew(0deg) translate(0px, 0px);
+  }
+
+  25%,
+  49.99% {
+    transform: scale(0.9, 1.15) skew(-6deg) translate(-1px, -2px);
+  }
+
+  50%,
+  74.99% {
+    transform: scale(1.1, 0.9) skew(4deg) translate(1px, 1px);
+  }
+
+  75%,
+  99.99% {
+    transform: scale(0.95, 1.1) skew(-3deg) translate(-1px, -1px);
+  }
+
+  100% {
+    transform: scale(1, 1) skew(0deg) translate(0px, 0px);
+  }
+}
+
+@keyframes cel-ember-1 {
+
+  0%,
+  24.99% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+
+  25%,
+  49.99% {
+    transform: translate(-4px, -15px) scale(0.8);
+    opacity: 0.8;
+  }
+
+  50%,
+  74.99% {
+    transform: translate(3px, -30px) scale(0.6);
+    opacity: 0.6;
+  }
+
+  75%,
+  99.99% {
+    transform: translate(-2px, -45px) scale(0.3);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translate(0px, -60px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes cel-ember-2 {
+
+  0%,
+  24.99% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+
+  25%,
+  49.99% {
+    transform: translate(5px, -12px) scale(0.8);
+    opacity: 0.8;
+  }
+
+  50%,
+  74.99% {
+    transform: translate(-4px, -25px) scale(0.6);
+    opacity: 0.6;
+  }
+
+  75%,
+  99.99% {
+    transform: translate(3px, -38px) scale(0.3);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translate(0px, -50px) scale(0);
+    opacity: 0;
+  }
+}
+
+.cel-flame-anim {
+  animation: cel-fire 0.4s infinite;
+  transform-origin: 32px 32px;
+}
