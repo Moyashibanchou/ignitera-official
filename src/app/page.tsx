@@ -213,7 +213,7 @@ export default function Home() {
                                         initial="hidden"
                                         whileInView="visible"
                                         viewport={{ once: true, amount: 0.1, margin: "50px" }}
-                                        variants={{ visible: { transition: { staggerChildren: 1.0 } } }}
+                                        variants={{ visible: { transition: { staggerChildren: 1.2 } } }}
                                     >
                                         <motion.li
                                             className="flex flex-col md:flex-row items-center gap-3"

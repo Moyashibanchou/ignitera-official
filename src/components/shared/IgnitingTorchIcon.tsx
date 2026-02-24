@@ -60,7 +60,7 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
                             visible: {
                                 opacity: [0, 1, 0],
                                 scale: [0.5, 2.0, 2.5],
-                                transition: { duration: 0.8, delay: delay, ease: "easeOut" }
+                                transition: { duration: 1.0, delay: delay, ease: "easeOut" }
                             }
                         }}
                     >
@@ -87,7 +87,7 @@ export default function IgnitingTorchIcon({ isLit = false, delay = 0 }: Props) {
                             visible: {
                                 scale: [0, 1.5, 0.9, 1.1, 1],
                                 opacity: [0, 1, 1, 1, 1],
-                                transition: { duration: 1.2, delay: delay, times: [0, 0.2, 0.5, 0.8, 1], ease: "easeOut" }
+                                transition: { duration: 1.5, delay: delay, times: [0, 0.2, 0.5, 0.8, 1], ease: "easeOut" }
                             }
                         }}
                         onAnimationComplete={(definition) => {
