@@ -5,17 +5,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 
 export default function ContactPage() {
-    const [focused, setFocused] = useState<string | null>(null);
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
         try {
             const response = await fetch('https://formspree.io/f/xzdaqqng', {
                 method: 'POST',
@@ -23,7 +24,7 @@ export default function ContactPage() {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(formData)
             });
 
             if (response.ok) {
@@ -37,28 +38,6 @@ export default function ContactPage() {
             setIsSubmitting(false);
         }
     };
-
-    const CustomInput = ({ id, label, type = "text" }: { id: string, label: string, type?: string }) => (
-        <div className="relative mb-12">
-            <label
-                className={`absolute left-0 transition-all duration-300 font-light ${focused === id || (typeof window !== 'undefined' && (document.getElementById(id) as HTMLInputElement)?.value) ? '-top-5 text-xs text-ignitera-500 drop-shadow-[0_0_8px_rgba(255,77,0,0.4)]' : 'top-1 text-zinc-500 text-lg'}`}
-                htmlFor={id}
-            >
-                {label}
-            </label>
-            <input
-                type={type}
-                id={id}
-                name={id}
-                required
-                onFocus={() => setFocused(id)}
-                onBlur={(e) => {
-                    if (!e.target.value) setFocused(null);
-                }}
-                className="text-white bg-transparent focus:outline-none w-full border-b border-white/10 py-2 focus:border-ignitera-500 focus:shadow-[0_1px_5px_rgba(255,77,0,0.3)] transition-all text-lg font-light"
-            />
-        </div>
-    );
 
     return (
         <div className="min-h-screen bg-transparent text-zinc-300 flex flex-col justify-center py-24 px-6 font-sans selection:bg-ignitera-500 selection:text-white relative">
@@ -96,27 +75,14 @@ export default function ContactPage() {
                                         <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-ignitera-500 to-transparent -translate-y-full group-hover:animate-[trace-y_3s_linear_infinite]" />
                                     </div>
 
-                                    <CustomInput id="name" label="お名前" />
-                                    <CustomInput id="email" label="メールアドレス" type="email" />
-
-                                    <div className="relative mb-12 mt-4">
-                                        <label
-                                            className={`absolute left-0 transition-all duration-300 font-light ${focused === 'message' || (typeof window !== 'undefined' && (document.getElementById('message') as HTMLTextAreaElement)?.value) ? '-top-5 text-xs text-ignitera-500 drop-shadow-[0_0_8px_rgba(255,77,0,0.4)]' : 'top-1 text-zinc-500 text-lg'}`}
-                                            htmlFor="message"
-                                        >
-                                            お問い合わせ内容
-                                        </label>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            required
-                                            rows={3}
-                                            onFocus={() => setFocused('message')}
-                                            onBlur={(e) => {
-                                                if (!e.target.value) setFocused(null);
-                                            }}
-                                            className="text-white bg-transparent focus:outline-none w-full border-b border-white/10 py-2 focus:border-ignitera-500 focus:shadow-[0_1px_5px_rgba(255,77,0,0.3)] transition-all text-lg font-light resize-none"
-                                        />
+                                    <div className="mb-6">
+                                        <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500" placeholder="お名前" />
+                                    </div>
+                                    <div className="mb-6">
+                                        <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500" placeholder="メールアドレス" />
+                                    </div>
+                                    <div className="mb-8">
+                                        <textarea name="message" required rows={5} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 resize-none" placeholder="お問い合わせ内容"></textarea>
                                     </div>
 
                                     <button type="submit" disabled={isSubmitting} className="w-full px-8 py-4 bg-white/5 border border-white/10 hover:border-ignitera-500/50 hover:bg-ignitera-500/10 hover:shadow-[0_0_20px_rgba(255,77,0,0.2)] text-white rounded-full font-medium transition-all duration-300 mt-4 backdrop-blur-sm disabled:opacity-50">
