@@ -141,7 +141,8 @@ export default function StudentsPage() {
                         transition={{ duration: 0.8, delay: 2.0 }}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1]">
-                            履歴書の君ではなく、<br className="md:hidden" />日常の君を証明しろ。
+                            履歴書の君ではなく、<br />
+                            日常の君を証明しろ。
                         </h1>
                     </motion.div>
 
