@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, Flame, Zap, Shield, Cpu } from "lucide-react";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import Preloader from "@/components/shared/Preloader";
 import StudentRegistrationForm from "@/components/forms/StudentRegistrationForm";
 
@@ -41,6 +42,13 @@ const itemVariants = {
 };
 
 const PlayerCard = () => {
+    const statusData = [
+        { subject: 'Passion (熱量)', A: 98, fullMark: 100 },
+        { subject: 'Logic (論理)', A: 92, fullMark: 100 },
+        { subject: 'Execution (実行力)', A: 85, fullMark: 100 },
+        { subject: 'Creativity (創造性)', A: 88, fullMark: 100 },
+    ];
+
     return (
         <motion.div
             animate={{ y: [-5, 5, -5] }}
@@ -67,29 +75,21 @@ const PlayerCard = () => {
                 </div>
             </div>
 
-            <div className="space-y-6">
-                {[
-                    { label: "Passion", value: 98, color: "from-orange-500 to-red-500" },
-                    { label: "Consistency", value: 85, color: "from-blue-500 to-cyan-400" },
-                    { label: "Logic", value: 92, color: "from-emerald-500 to-green-400" },
-                ].map((stat, i) => (
-                    <div key={i}>
-                        <div className="flex justify-between text-sm font-mono mb-2">
-                            <span className="text-zinc-300">{stat.label}</span>
-                            <span className="text-white font-bold">{stat.value}<span className="text-zinc-500 text-xs ml-1">/100</span></span>
-                        </div>
-                        <div className="h-2 w-full bg-black/50 rounded-full overflow-hidden border border-white/5">
-                            <motion.div
-                                className={`h-full bg-gradient-to-r ${stat.color} rounded-full relative`}
-                                initial={{ width: 0 }}
-                                animate={{ width: `${stat.value}%` }}
-                                transition={{ duration: 1.5, delay: 0.5 + (i * 0.2), type: "spring" }}
-                            >
-                                <div className="absolute top-0 right-0 w-4 h-full bg-white/50 blur-[2px]" />
-                            </motion.div>
-                        </div>
-                    </div>
-                ))}
+            <div className="w-full h-[250px] mb-6 mt-4">
+                <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={statusData}>
+                        <PolarGrid stroke="#333" />
+                        <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 12, fontWeight: 500 }} />
+                        <Radar
+                            name="Skill"
+                            dataKey="A"
+                            stroke="#f97316"
+                            fill="#f97316"
+                            fillOpacity={0.4}
+                            style={{ filter: 'drop-shadow(0 0 10px rgba(249,115,22,0.8))' }}
+                        />
+                    </RadarChart>
+                </ResponsiveContainer>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-xs font-mono text-zinc-500">
