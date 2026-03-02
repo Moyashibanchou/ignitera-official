@@ -24,7 +24,7 @@ export default function TextAnimatedHero() {
         },
     };
 
-    const title1 = "行動ログから、".split("");
+    const title1 = "行動ログから".split("");
     const title2 = "真の評価基盤を。".split("");
 
     return (
@@ -42,7 +42,7 @@ export default function TextAnimatedHero() {
                     </motion.span>
                 ))}
             </div>
-            <br className="hidden md:block" />
+            <br />
             <div className="inline-block overflow-hidden pb-2">
                 {title2.map((char, index) => (
                     <motion.span key={index} variants={child} className="inline-block" style={{ whiteSpace: "pre" }}>
