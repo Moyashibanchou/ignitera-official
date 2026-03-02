@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/shared/FadeIn";
 import IntegrationsMarquee from "@/components/methodology/IntegrationsMarquee";
 import ProprietaryEngineCore from "@/components/methodology/ProprietaryEngineCore";
@@ -26,11 +26,26 @@ const AnimatedBackground = () => (
 
 export default function EnterprisePage() {
     const [showPreloader, setShowPreloader] = useState(true);
+    const [isMainCtaVisible, setIsMainCtaVisible] = useState(false);
+    const mainCtaRef = useRef(null);
 
     useEffect(() => {
-        // Only run on initial load
         const timer = setTimeout(() => setShowPreloader(false), 2000);
-        return () => clearTimeout(timer);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsMainCtaVisible(entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+        if (mainCtaRef.current) {
+            observer.observe(mainCtaRef.current);
+        }
+
+        return () => {
+            clearTimeout(timer);
+            if (mainCtaRef.current) observer.unobserve(mainCtaRef.current);
+        };
     }, []);
 
     return (
@@ -138,23 +153,33 @@ export default function EnterprisePage() {
                     </div>
                 </section>
 
-                <section className="py-24 relative z-10 border-t border-white/5 bg-[#050505]">
+                <section ref={mainCtaRef} className="py-24 relative z-10 border-t border-white/5 bg-[#050505]">
                     <div className="max-w-7xl mx-auto px-6">
                         <EnterpriseRegistrationForm />
                     </div>
                 </section>
 
                 {/* Floating CTA for Mobile */}
-                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe">
-                    <a
-                        href="https://forms.gle/Lej96gQzpg1WQEUVA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
-                    >
-                        企業向け登録へ進む
-                    </a>
-                </div>
+                <AnimatePresence>
+                    {!isMainCtaVisible && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 30, scale: 0.8, filter: "blur(4px)" }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe"
+                        >
+                            <a
+                                href="https://forms.gle/Lej96gQzpg1WQEUVA"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
+                            >
+                                企業向け登録へ進む
+                            </a>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.main>
         </>
     );

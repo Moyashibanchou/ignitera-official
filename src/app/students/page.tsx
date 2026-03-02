@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, Flame, Zap, Shield, Cpu } from "lucide-react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import Preloader from "@/components/shared/Preloader";
@@ -105,10 +105,26 @@ const PlayerCard = () => {
 
 export default function StudentsPage() {
     const [showPreloader, setShowPreloader] = useState(true);
+    const [isMainCtaVisible, setIsMainCtaVisible] = useState(false);
+    const mainCtaRef = useRef(null);
 
     useEffect(() => {
         const timer = setTimeout(() => setShowPreloader(false), 2000);
-        return () => clearTimeout(timer);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsMainCtaVisible(entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+        if (mainCtaRef.current) {
+            observer.observe(mainCtaRef.current);
+        }
+
+        return () => {
+            clearTimeout(timer);
+            if (mainCtaRef.current) observer.unobserve(mainCtaRef.current);
+        };
     }, []);
 
     return (
@@ -252,21 +268,31 @@ export default function StudentsPage() {
                     </motion.div>
                 </section>
 
-                <section className="py-24 md:py-32 relative z-10 px-4 md:px-6 w-full max-w-7xl mx-auto">
+                <section ref={mainCtaRef} className="py-24 md:py-32 relative z-10 px-4 md:px-6 w-full max-w-7xl mx-auto">
                     <StudentRegistrationForm />
                 </section>
 
                 {/* Floating CTA for Mobile */}
-                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe">
-                    <a
-                        href="https://forms.gle/syB5oz3tyPuV4k4v8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
-                    >
-                        無料で登録する
-                    </a>
-                </div>
+                <AnimatePresence>
+                    {!isMainCtaVisible && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 30, scale: 0.8, filter: "blur(4px)" }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe"
+                        >
+                            <a
+                                href="https://forms.gle/syB5oz3tyPuV4k4v8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
+                            >
+                                無料で登録する
+                            </a>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.main>
         </>
     );
