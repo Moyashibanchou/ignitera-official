@@ -280,13 +280,13 @@ export default function StudentsPage() {
                             animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
                             exit={{ opacity: 0, y: 30, x: "-50%", scale: 0.8, filter: "blur(4px)" }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
-                            className="fixed bottom-4 left-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe"
+                            className="fixed bottom-6 left-1/2 w-[90%] max-w-md z-50 flex justify-center pb-safe"
                         >
                             <a
                                 href="https://forms.gle/syB5oz3tyPuV4k4v8"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
+                                className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer"
                             >
                                 無料で登録する
                             </a>
