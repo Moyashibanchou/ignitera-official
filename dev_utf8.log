@@ -1,0 +1,47 @@
+﻿
+> ignitera@0.1.0 dev
+> next dev
+
+   笆ｲ Next.js 14.1.0
+   - Local:        http://localhost:3000
+
+ 笨・Ready in 3.3s
+ 笳・Compiling / ...
+ 笨・Compiled / in 3.4s (1226 modules)
+ 笨・Compiled in 601ms (619 modules)
+ 笨・Compiled in 116ms (605 modules)
+ 笨・Compiled in 575ms (619 modules)
+ 笨・Compiled in 481ms (619 modules)
+ 笨・Compiled in 338ms (619 modules)
+ 笳・Compiling / ...
+ 笨・Compiled / in 886ms (607 modules)
+ 笨・Compiled in 889ms (1226 modules)
+ 笨・Compiled in 568ms (1226 modules)
+ 笨・Compiled in 551ms (1226 modules)
+ 笨・Compiled in 606ms (1226 modules)
+ 笨・Compiled in 462ms (1226 modules)
+ 笳・Compiling /methodology ...
+ 笨・Compiled /methodology in 3s (1292 modules)
+ 笨・Compiled in 4.9s (1292 modules)
+node.exe : 
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/
+node.exe" "C:\Program Files\n
+odejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (:String  
+  ) [], RemoteException
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+ 笞 metadata.metadataBase is 
+not set for resolving social 
+open graph or twitter images,
+ using "http://localhost:3000
+". See https://nextjs.org/doc
+s/app/api-reference/functions
+/generate-metadata#metadataba
+se

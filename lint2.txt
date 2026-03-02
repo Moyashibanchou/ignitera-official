@@ -1,0 +1,3 @@
+﻿? How would you like to configure ESLint? https://nextjs.org/docs/basic-features/eslint
+[?25l笶ｯ  Strict (recommended)
+   Base

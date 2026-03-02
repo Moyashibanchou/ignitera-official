@@ -183,7 +183,7 @@ export default function AdvancedStatusBoard() {
                 </p>
 
                 <button className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(255,77,0,0.3)] hover:shadow-[0_0_30px_rgba(255,77,0,0.5)] transition-all duration-300 transform hover:-translate-y-1">
-                    無料でアカウントを作成
+                    全項目をアンロック
                 </button>
             </div>
         </div>

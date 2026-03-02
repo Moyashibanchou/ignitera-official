@@ -1,9 +1,42 @@
 "use client";
 import React, { useState } from "react";
 import FadeIn from "@/components/shared/FadeIn";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle } from "lucide-react";
 
 export default function ContactPage() {
     const [focused, setFocused] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('https://formspree.io/f/xzdaqqng', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+            } else {
+                alert("送信エラーが発生しました。");
+            }
+        } catch (error) {
+            alert("通信エラーが発生しました。");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const CustomInput = ({ id, label, type = "text" }: { id: string, label: string, type?: string }) => (
         <div className="relative mb-12">
@@ -16,11 +49,13 @@ export default function ContactPage() {
             <input
                 type={type}
                 id={id}
+                name={id}
+                required
                 onFocus={() => setFocused(id)}
                 onBlur={(e) => {
                     if (!e.target.value) setFocused(null);
                 }}
-                className="w-full bg-transparent border-b border-white/10 py-2 focus:outline-none focus:border-ignitera-500 focus:shadow-[0_1px_5px_rgba(255,77,0,0.3)] transition-all text-lg font-light text-white"
+                className="text-white bg-transparent focus:outline-none w-full border-b border-white/10 py-2 focus:border-ignitera-500 focus:shadow-[0_1px_5px_rgba(255,77,0,0.3)] transition-all text-lg font-light"
             />
         </div>
     );
@@ -47,37 +82,61 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
                     <FadeIn delay={0.1}>
-                        <form className="max-w-md glass-panel p-10 relative overflow-hidden group" onSubmit={(e) => e.preventDefault()}>
-                            {/* Shimmer on hover */}
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                                <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-ignitera-500 to-transparent -translate-y-full group-hover:animate-[trace-y_3s_linear_infinite]" />
-                            </div>
-
-                            <CustomInput id="name" label="お名前" />
-                            <CustomInput id="email" label="メールアドレス" type="email" />
-
-                            <div className="relative mb-12 mt-4">
-                                <label
-                                    className={`absolute left-0 transition-all duration-300 font-light ${focused === 'message' || (typeof document !== 'undefined' && (document.getElementById('message') as HTMLTextAreaElement)?.value) ? '-top-5 text-xs text-ignitera-500 drop-shadow-[0_0_8px_rgba(255,77,0,0.4)]' : 'top-1 text-zinc-500 text-lg'}`}
-                                    htmlFor="message"
+                        <AnimatePresence mode="wait">
+                            {!isSuccess ? (
+                                <motion.form
+                                    key="form"
+                                    initial={{ opacity: 1 }}
+                                    exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
+                                    className="max-w-md glass-panel p-10 relative overflow-hidden group"
+                                    onSubmit={handleSubmit}
                                 >
-                                    お問い合わせ内容
-                                </label>
-                                <textarea
-                                    id="message"
-                                    rows={3}
-                                    onFocus={() => setFocused('message')}
-                                    onBlur={(e) => {
-                                        if (!e.target.value) setFocused(null);
-                                    }}
-                                    className="w-full bg-transparent border-b border-white/10 py-2 focus:outline-none focus:border-ignitera-500 focus:shadow-[0_1px_5px_rgba(255,77,0,0.3)] transition-all text-lg font-light text-white resize-none"
-                                />
-                            </div>
+                                    {/* Shimmer on hover */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                                        <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-ignitera-500 to-transparent -translate-y-full group-hover:animate-[trace-y_3s_linear_infinite]" />
+                                    </div>
 
-                            <button type="submit" className="w-full px-8 py-4 bg-white/5 border border-white/10 hover:border-ignitera-500/50 hover:bg-ignitera-500/10 hover:shadow-[0_0_20px_rgba(255,77,0,0.2)] text-white rounded-full font-medium transition-all duration-300 mt-4 backdrop-blur-sm">
-                                送信する
-                            </button>
-                        </form>
+                                    <CustomInput id="name" label="お名前" />
+                                    <CustomInput id="email" label="メールアドレス" type="email" />
+
+                                    <div className="relative mb-12 mt-4">
+                                        <label
+                                            className={`absolute left-0 transition-all duration-300 font-light ${focused === 'message' || (typeof window !== 'undefined' && (document.getElementById('message') as HTMLTextAreaElement)?.value) ? '-top-5 text-xs text-ignitera-500 drop-shadow-[0_0_8px_rgba(255,77,0,0.4)]' : 'top-1 text-zinc-500 text-lg'}`}
+                                            htmlFor="message"
+                                        >
+                                            お問い合わせ内容
+                                        </label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            required
+                                            rows={3}
+                                            onFocus={() => setFocused('message')}
+                                            onBlur={(e) => {
+                                                if (!e.target.value) setFocused(null);
+                                            }}
+                                            className="text-white bg-transparent focus:outline-none w-full border-b border-white/10 py-2 focus:border-ignitera-500 focus:shadow-[0_1px_5px_rgba(255,77,0,0.3)] transition-all text-lg font-light resize-none"
+                                        />
+                                    </div>
+
+                                    <button type="submit" disabled={isSubmitting} className="w-full px-8 py-4 bg-white/5 border border-white/10 hover:border-ignitera-500/50 hover:bg-ignitera-500/10 hover:shadow-[0_0_20px_rgba(255,77,0,0.2)] text-white rounded-full font-medium transition-all duration-300 mt-4 backdrop-blur-sm disabled:opacity-50">
+                                        {isSubmitting ? "送信中..." : "送信する"}
+                                    </button>
+                                </motion.form>
+                            ) : (
+                                <motion.div
+                                    key="success"
+                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="max-w-md glass-panel p-10 flex flex-col items-center justify-center text-center py-20"
+                                >
+                                    <CheckCircle className="w-16 h-16 text-green-500 mb-6 drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]" />
+                                    <h3 className="text-2xl font-bold text-white mb-2 tracking-widest">MESSAGE SENT</h3>
+                                    <p className="text-zinc-400">お問い合わせを送信しました。<br />担当者より順次ご返信いたします。</p>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </FadeIn>
 
                     <FadeIn delay={0.2} className="md:border-l md:border-white/10 md:pl-20 flex flex-col justify-center mt-12 md:mt-0 relative">
