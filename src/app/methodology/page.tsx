@@ -19,7 +19,7 @@ export default function MethodologyPage() {
                         <div className="w-2 h-2 rounded-full bg-ignitera-500 animate-pulse shadow-[0_0_10px_#ff4d00]" />
                         <p className="text-ignitera-500 font-medium tracking-wide text-sm uppercase">Methodology</p>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-normal tracking-tight mb-20 text-white glow-text break-keep">
+                    <h1 className="text-5xl md:text-7xl font-normal tracking-tight mb-20 text-white glow-text">
                         評価ロジックと<br />データ設計
                     </h1>
                 </FadeIn>
@@ -27,9 +27,9 @@ export default function MethodologyPage() {
                 {/* 4 Layer Advanced Status Board */}
                 <FadeIn delay={0.1}>
                     <section className="mb-32">
-                        <h2 className="text-2xl font-medium mb-12 pb-4 border-b border-white/10 text-white break-keep">アドバンスド・ステータスボード (16 Metrics)</h2>
+                        <h2 className="text-2xl font-medium mb-12 pb-4 border-b border-white/10 text-white">アドバンスド・ステータスボード (16 Metrics)</h2>
                         <AdvancedStatusBoard />
-                        <div className="mt-8 p-6 glass-panel border border-white/5 text-center text-sm font-medium text-zinc-400 rounded-sm break-keep leading-relaxed">
+                        <div className="mt-8 p-6 glass-panel border border-white/5 text-center text-sm font-medium text-zinc-400 rounded-sm">
                             + これら4レイヤー・16項目の行動データに「企業固有の価値観ベクトル」を掛け合わせて最終適合度を動的に算出します。
                         </div>
                     </section>

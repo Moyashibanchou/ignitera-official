@@ -140,8 +140,8 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.0 }}
                     >
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1] break-keep">
-                            履歴書の君ではなく、<br className="block md:hidden" />
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1]">
+                            履歴書の君ではなく、<br />
                             日常の君を証明しろ。
                         </h1>
                     </motion.div>
@@ -151,7 +151,7 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.2 }}
                     >
-                        <p className="text-lg md:text-xl lg:text-2xl text-zinc-300 font-medium max-w-4xl mx-auto leading-relaxed mb-12 drop-shadow-md break-keep">
+                        <p className="text-lg md:text-xl lg:text-2xl text-zinc-300 font-medium max-w-4xl mx-auto leading-relaxed mb-12 drop-shadow-md">
                             学歴や面接のテクニックだけで評価される時代は終わった。<br className="hidden md:block" />
                             IGNITERAは、君の日常の熱中、密かな努力、そして『隠れた才能』をデータ化し、<br className="hidden md:block" />
                             最高の企業へ直接届ける次世代のプラットフォームだ。
@@ -190,7 +190,7 @@ export default function StudentsPage() {
                         viewport={{ once: true, margin: "-100px" }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight break-keep">君がやるべきことは、<br className="block md:hidden" />たったこれだけ。</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">君がやるべきことは、<br className="md:hidden" />たったこれだけ。</h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full shadow-[0_0_10px_rgba(255,77,0,0.5)]" />
                     </motion.div>
 
@@ -247,7 +247,7 @@ export default function StudentsPage() {
 
                                 <h3 className="text-2xl font-bold text-white mb-2 tracking-wide group-hover:text-orange-400 transition-colors uppercase">{item.title}</h3>
                                 <div className={`text-sm font-bold mb-4 tracking-widest ${item.color}`}>{item.subtitle}</div>
-                                <p className="text-zinc-400 font-medium leading-relaxed break-keep">{item.desc}</p>
+                                <p className="text-zinc-400 font-medium leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </motion.div>
