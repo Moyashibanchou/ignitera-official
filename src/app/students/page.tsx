@@ -276,11 +276,11 @@ export default function StudentsPage() {
                 <AnimatePresence>
                     {!isMainCtaVisible && (
                         <motion.div
-                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 30, scale: 0.8, filter: "blur(4px)" }}
+                            initial={{ opacity: 0, y: 50, x: "-50%", scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
+                            exit={{ opacity: 0, y: 30, x: "-50%", scale: 0.8, filter: "blur(4px)" }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
-                            className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe"
+                            className="fixed bottom-4 left-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe"
                         >
                             <a
                                 href="https://forms.gle/syB5oz3tyPuV4k4v8"
