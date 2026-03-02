@@ -50,13 +50,19 @@ export default function Home() {
                         </div>
                     </FadeIn>
 
+                    <FadeIn delay={0.2} className="w-full">
+                        <span className="inline-block py-1 px-3 mb-6 text-sm font-bold text-orange-500 bg-orange-500/10 border border-orange-500/30 rounded-full tracking-wider shadow-[0_0_10px_rgba(249,115,22,0.3)]">
+                            次世代の採用プラットフォーム
+                        </span>
+                    </FadeIn>
+
                     <div className="w-full">
                         <TextAnimatedHero />
                     </div>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed mt-4">
-                            「学歴・ガクチカ・面接」から「データ・証明・信頼」へ。<br />
+                        <p className="text-lg md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-loose mt-4 break-keep">
+                            「学歴・ガクチカ・面接」から「データ・証明・信頼」へ。<br className="hidden md:block" />
                             評価基準のパラダイムを変革する。
                         </p>
                     </FadeIn>
@@ -74,7 +80,7 @@ export default function Home() {
                                     <p className="text-zinc-300 font-light text-base md:text-lg lg:text-xl leading-relaxed">
                                         学歴フィルターを壊せ。<br className="hidden md:block" />行動で証明する、君の真の価値。
                                     </p>
-                                    <div className="mt-10 px-8 py-3 rounded-full border-2 border-white/20 group-hover:bg-white group-hover:text-black transition-all duration-300 text-sm md:text-base font-medium tracking-wide">
+                                    <div className="mt-10 px-8 py-3 rounded-full border border-white text-black bg-white transition-all duration-300 text-sm md:text-base font-bold tracking-wide shadow-[0_0_20px_rgba(255,255,255,0.4)] group-hover:scale-105">
                                         学生向けエントランスへ
                                     </div>
                                 </div>
@@ -92,7 +98,7 @@ export default function Home() {
                                     <p className="text-zinc-400 group-hover:text-zinc-300 font-light text-base md:text-lg lg:text-xl leading-relaxed relative z-10 transition-colors">
                                         見落とされた『隠れた天才』を。<br className="hidden md:block" />行動ログが導く次世代の採用基盤。
                                     </p>
-                                    <div className="mt-10 px-8 py-3 rounded-full border-2 border-ignitera-500/40 text-ignitera-400 group-hover:bg-ignitera-500 group-hover:text-white group-hover:border-ignitera-500 transition-all duration-300 text-sm md:text-base font-medium tracking-wide shadow-[0_0_15px_rgba(255,77,0,0)] group-hover:shadow-[0_0_20px_rgba(255,77,0,0.4)] relative z-10">
+                                    <div className="mt-10 px-8 py-3 rounded-full border border-orange-400 text-white bg-orange-600 transition-all duration-300 text-sm md:text-base font-bold tracking-wide shadow-[0_0_20px_rgba(249,115,22,0.6)] group-hover:scale-105 relative z-10">
                                         企業向けエントランスへ
                                     </div>
                                 </div>

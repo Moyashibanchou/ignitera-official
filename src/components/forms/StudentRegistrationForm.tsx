@@ -16,7 +16,7 @@ export default function StudentRegistrationForm() {
                 href="https://forms.gle/syB5oz3tyPuV4k4v8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-500 rounded-full transition-all duration-300 hover:bg-orange-400 hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1"
             >
                 事前登録へ進む（無料）
                 <ArrowRight className="ml-2 w-5 h-5" />

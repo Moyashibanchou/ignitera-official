@@ -129,10 +129,9 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.8 }}
                     >
-                        <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-orange-500/30 bg-orange-500/10 backdrop-blur-md">
-                            <Flame className="w-4 h-4 text-orange-500 animate-pulse" />
-                            <span className="text-orange-400 font-bold tracking-widest text-xs uppercase">Welcome to the rebellion</span>
-                        </div>
+                        <span className="inline-block py-1 px-3 mb-8 text-sm font-bold text-orange-500 bg-orange-500/10 border border-orange-500/30 rounded-full tracking-wider shadow-[0_0_10px_rgba(249,115,22,0.3)]">
+                            学生向け・完全無料
+                        </span>
                     </motion.div>
 
                     <motion.div
@@ -140,8 +139,8 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.0 }}
                     >
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1]">
-                            履歴書の君ではなく、<br />
+                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1] break-keep">
+                            履歴書の君ではなく、<br className="block md:hidden" />
                             日常の君を証明しろ。
                         </h1>
                     </motion.div>
@@ -151,7 +150,7 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.2 }}
                     >
-                        <p className="text-lg md:text-xl lg:text-2xl text-zinc-300 font-medium max-w-4xl mx-auto leading-relaxed mb-12 drop-shadow-md">
+                        <p className="text-lg md:text-xl lg:text-2xl text-gray-400 font-light max-w-4xl mx-auto leading-loose mb-12 drop-shadow-md break-keep">
                             学歴や面接のテクニックだけで評価される時代は終わった。<br className="hidden md:block" />
                             IGNITERAは、君の日常の熱中、密かな努力、そして『隠れた才能』をデータ化し、<br className="hidden md:block" />
                             最高の企業へ直接届ける次世代のプラットフォームだ。
@@ -167,7 +166,7 @@ export default function StudentsPage() {
                             whileHover={{ scale: 1.05, boxShadow: "0px 0px 40px rgba(255, 77, 0, 0.8)" }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            className="px-8 py-5 md:px-12 md:py-6 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-full font-black text-lg md:text-xl tracking-wide shadow-[0_0_20px_rgba(255,77,0,0.5)] border border-orange-400/50 relative overflow-hidden group"
+                            className="px-8 py-5 md:px-12 md:py-6 bg-orange-600 text-white rounded-full font-black text-lg md:text-xl tracking-wide shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 relative overflow-hidden group"
                         >
                             {/* Inner shine */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[trace_1.5s_ease-in-out_infinite]" />
@@ -256,6 +255,18 @@ export default function StudentsPage() {
                 <section className="py-24 md:py-32 relative z-10 px-4 md:px-6 w-full max-w-7xl mx-auto">
                     <StudentRegistrationForm />
                 </section>
+
+                {/* Floating CTA for Mobile */}
+                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe">
+                    <a
+                        href="https://forms.gle/syB5oz3tyPuV4k4v8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
+                    >
+                        無料で登録する
+                    </a>
+                </div>
             </motion.main>
         </>
     );

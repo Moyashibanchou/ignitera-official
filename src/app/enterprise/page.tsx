@@ -56,14 +56,17 @@ export default function EnterprisePage() {
                     </FadeIn>
 
                     <FadeIn delay={0.2} className="w-full">
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            面接上手なだけの候補者に<br />
+                        <span className="inline-block py-1 px-3 mb-8 text-sm font-bold text-orange-500 bg-orange-500/10 border border-orange-500/30 rounded-full tracking-wider shadow-[0_0_10px_rgba(249,115,22,0.3)]">
+                            法人向け・初期費用無料
+                        </span>
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                            面接上手なだけの候補者に<br className="block md:hidden" />
                             もう騙されない。
                         </h1>
                     </FadeIn>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-4xl mx-auto leading-relaxed mt-6 mb-16">
+                        <p className="text-lg md:text-2xl text-gray-400 font-light max-w-4xl mx-auto leading-loose mt-6 mb-16 break-keep">
                             たった数回の面接や履歴書では、候補者の真のポテンシャルは見抜けない。<br className="hidden md:block" />
                             IGNITERAは、学生の日常的な行動データから『本物の才能』を可視化し、<br className="hidden md:block" />
                             ミスマッチのない圧倒的な採用ROIを実現します。
@@ -73,13 +76,14 @@ export default function EnterprisePage() {
                     {/* CTAs */}
                     <FadeIn delay={0.6} className="w-full">
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-xl mx-auto">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-full sm:w-auto px-10 py-5 bg-ignitera-500 hover:bg-ignitera-400 text-white rounded-full font-bold transition-all duration-300 shadow-[0_0_30px_rgba(255,77,0,0.4)] hover:shadow-[0_0_50px_rgba(255,77,0,0.8)] text-center text-base tracking-wide"
+                            <a
+                                href="https://forms.gle/Lej96gQzpg1WQEUVA"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full sm:w-auto px-10 py-5 bg-orange-600 hover:bg-orange-500 text-white rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 text-center text-base tracking-wide inline-block hover:-translate-y-1"
                             >
                                 デモをリクエスト
-                            </motion.button>
+                            </a>
 
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
@@ -140,6 +144,17 @@ export default function EnterprisePage() {
                     </div>
                 </section>
 
+                {/* Floating CTA for Mobile */}
+                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-50 md:hidden flex justify-center pb-safe">
+                    <a
+                        href="https://forms.gle/Lej96gQzpg1WQEUVA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide"
+                    >
+                        企業向け登録へ進む
+                    </a>
+                </div>
             </motion.main>
         </>
     );
