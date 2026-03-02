@@ -45,7 +45,7 @@ export default function EnterprisePage() {
                 <AnimatedBackground />
 
                 {/* Hero Section */}
-                <section className="min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-6 w-full max-w-7xl mx-auto pt-32 pb-24 relative z-10">
+                <section className="min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-6 w-full max-w-full md:max-w-7xl mx-auto pt-32 pb-24 relative z-10 overflow-hidden">
                     <FadeIn>
                         <div className="flex items-center gap-3 mb-8 justify-center">
                             <div className="w-2 h-2 rounded-full bg-ignitera-500 animate-pulse shadow-[0_0_15px_#ff4d00]" />
@@ -59,16 +59,16 @@ export default function EnterprisePage() {
                         <span className="inline-block py-1 px-3 mb-8 text-sm font-bold text-orange-500 bg-orange-500/10 border border-orange-500/30 rounded-full tracking-wider shadow-[0_0_10px_rgba(249,115,22,0.3)]">
                             法人向け・初期費用無料
                         </span>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] break-words whitespace-normal">
                             面接上手なだけの候補者に<br className="block md:hidden" />
                             もう騙されない。
                         </h1>
                     </FadeIn>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-gray-400 font-light max-w-4xl mx-auto leading-loose mt-6 mb-16 break-keep">
-                            たった数回の面接や履歴書では、候補者の真のポテンシャルは見抜けない。<br className="hidden md:block" />
-                            IGNITERAは、学生の日常的な行動データから『本物の才能』を可視化し、<br className="hidden md:block" />
+                        <p className="text-lg md:text-2xl text-gray-400 font-light max-w-4xl mx-auto leading-loose mt-6 mb-16 break-words whitespace-normal">
+                            たった数回の面接や履歴書では、候補者の真のポテンシャルは見抜けない。
+                            IGNITERAは、学生の日常的な行動データから『本物の才能』を可視化し、
                             ミスマッチのない圧倒的な採用ROIを実現します。
                         </p>
                     </FadeIn>

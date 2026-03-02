@@ -123,7 +123,7 @@ export default function StudentsPage() {
                 <AnimatedBackground />
 
                 {/* Hero Section */}
-                <section className="pt-32 md:pt-48 pb-20 px-4 md:px-6 w-full max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+                <section className="pt-32 md:pt-48 pb-20 px-4 md:px-6 w-full max-w-full md:max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center overflow-hidden">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -139,7 +139,7 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.0 }}
                     >
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1] break-keep">
+                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1] break-words whitespace-normal">
                             履歴書の君ではなく、<br className="block md:hidden" />
                             日常の君を証明しろ。
                         </h1>
@@ -150,9 +150,9 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.2 }}
                     >
-                        <p className="text-lg md:text-xl lg:text-2xl text-gray-400 font-light max-w-4xl mx-auto leading-loose mb-12 drop-shadow-md break-keep">
-                            学歴や面接のテクニックだけで評価される時代は終わった。<br className="hidden md:block" />
-                            IGNITERAは、君の日常の熱中、密かな努力、そして『隠れた才能』をデータ化し、<br className="hidden md:block" />
+                        <p className="text-lg md:text-xl lg:text-2xl text-gray-400 font-light max-w-4xl mx-auto leading-loose mb-12 drop-shadow-md break-words whitespace-normal">
+                            学歴や面接のテクニックだけで評価される時代は終わった。
+                            IGNITERAは、君の日常の熱中、密かな努力、そして『隠れた才能』をデータ化し、
                             最高の企業へ直接届ける次世代のプラットフォームだ。
                         </p>
                     </motion.div>

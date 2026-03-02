@@ -42,7 +42,7 @@ export default function Home() {
             >
                 <AnimatedBackground />
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 w-full max-w-7xl mx-auto py-20 pb-32">
+                <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 w-full max-w-full md:max-w-7xl mx-auto py-20 pb-32 overflow-hidden">
                     <FadeIn>
                         <div className="flex items-center gap-3 mb-6 justify-center mt-20 md:mt-0">
                             <div className="w-2 h-2 rounded-full bg-ignitera-500 animate-pulse shadow-[0_0_10px_#ff4d00]" />
@@ -61,7 +61,7 @@ export default function Home() {
                     </div>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-loose mt-4 break-keep">
+                        <p className="text-lg md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-loose mt-4 break-words whitespace-normal">
                             「学歴・ガクチカ・面接」から「データ・証明・信頼」へ。<br className="hidden md:block" />
                             評価基準のパラダイムを変革する。
                         </p>
