@@ -56,14 +56,14 @@ export default function EnterprisePage() {
                     </FadeIn>
 
                     <FadeIn delay={0.2} className="w-full">
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            面接上手なだけの候補者に<br />
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] break-keep">
+                            面接上手なだけの候補者に<br className="block md:hidden" />
                             もう騙されない。
                         </h1>
                     </FadeIn>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-4xl mx-auto leading-relaxed mt-6 mb-16">
+                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-4xl mx-auto leading-relaxed mt-6 mb-16 break-keep">
                             たった数回の面接や履歴書では、候補者の真のポテンシャルは見抜けない。<br className="hidden md:block" />
                             IGNITERAは、学生の日常的な行動データから『本物の才能』を可視化し、<br className="hidden md:block" />
                             ミスマッチのない圧倒的な採用ROIを実現します。
@@ -96,8 +96,8 @@ export default function EnterprisePage() {
                 <section className="py-24 relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm">
                     <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
                         <FadeIn>
-                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight glow-text">Seamless Integrations</h2>
-                            <p className="text-zinc-400 font-light">日常のワークフローを妨げずに、多角的な行動データを収集。</p>
+                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight glow-text break-keep">Seamless Integrations</h2>
+                            <p className="text-zinc-400 font-light break-keep">日常のワークフローを妨げずに、多角的な行動データを収集。</p>
                         </FadeIn>
                     </div>
                     <FadeIn delay={0.2}>
@@ -109,8 +109,8 @@ export default function EnterprisePage() {
                 <section className="py-32 relative z-10 border-t border-white/5 bg-black/60">
                     <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
                         <FadeIn>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">他社が見落とす原石を発掘</h2>
-                            <p className="text-zinc-400 font-light text-lg">学歴や面接スキルに隠れた、真の課題解決能力や熱量を持つ人材に直接アプローチ。</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] break-keep">他社が見落とす原石を発掘</h2>
+                            <p className="text-zinc-400 font-light text-lg break-keep leading-relaxed">学歴や面接スキルに隠れた、真の課題解決能力や熱量を持つ人材に直接アプローチ。</p>
                         </FadeIn>
                     </div>
                     <FadeIn delay={0.3}>
@@ -123,8 +123,8 @@ export default function EnterprisePage() {
                     <div className="max-w-5xl mx-auto px-6">
                         <FadeIn>
                             <div className="text-center mb-16">
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight glow-text">採用ミスマッチの劇的削減</h2>
-                                <p className="text-zinc-400 font-light text-lg mb-8">
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight glow-text break-keep">採用ミスマッチの劇的削減</h2>
+                                <p className="text-zinc-400 font-light text-lg mb-8 break-keep leading-relaxed">
                                     行動ログに基づく客観的なステータス評価により、入社後の「こんなはずじゃなかった」をゼロへ。
                                 </p>
                             </div>

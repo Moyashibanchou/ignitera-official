@@ -55,8 +55,8 @@ export default function Home() {
                     </div>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed mt-4">
-                            「学歴・ガクチカ・面接」から「データ・証明・信頼」へ。<br />
+                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed mt-4 break-keep">
+                            「学歴・ガクチカ・面接」から「データ・証明・信頼」へ。<br className="hidden md:block" />
                             評価基準のパラダイムを変革する。
                         </p>
                     </FadeIn>
@@ -71,7 +71,7 @@ export default function Home() {
                                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-md">
                                         For Students
                                     </h2>
-                                    <p className="text-zinc-300 font-light text-base md:text-lg lg:text-xl leading-relaxed">
+                                    <p className="text-zinc-300 font-light text-base md:text-lg lg:text-xl leading-relaxed break-keep">
                                         学歴フィルターを壊せ。<br className="hidden md:block" />行動で証明する、君の真の価値。
                                     </p>
                                     <div className="mt-10 px-8 py-3 rounded-full border-2 border-white/20 group-hover:bg-white group-hover:text-black transition-all duration-300 text-sm md:text-base font-medium tracking-wide">
@@ -89,7 +89,7 @@ export default function Home() {
                                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-ignitera-400 to-orange-600 mb-6 tracking-tight drop-shadow-[0_0_15px_rgba(255,77,0,0.3)] group-hover:drop-shadow-[0_0_25px_rgba(255,77,0,0.6)] transition-all duration-500 relative z-10">
                                         For Enterprise
                                     </h2>
-                                    <p className="text-zinc-400 group-hover:text-zinc-300 font-light text-base md:text-lg lg:text-xl leading-relaxed relative z-10 transition-colors">
+                                    <p className="text-zinc-400 group-hover:text-zinc-300 font-light text-base md:text-lg lg:text-xl leading-relaxed relative z-10 transition-colors break-keep">
                                         見落とされた『隠れた天才』を。<br className="hidden md:block" />行動ログが導く次世代の採用基盤。
                                     </p>
                                     <div className="mt-10 px-8 py-3 rounded-full border-2 border-ignitera-500/40 text-ignitera-400 group-hover:bg-ignitera-500 group-hover:text-white group-hover:border-ignitera-500 transition-all duration-300 text-sm md:text-base font-medium tracking-wide shadow-[0_0_15px_rgba(255,77,0,0)] group-hover:shadow-[0_0_20px_rgba(255,77,0,0.4)] relative z-10">

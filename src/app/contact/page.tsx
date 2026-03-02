@@ -54,8 +54,8 @@ export default function ContactPage() {
                         <div className="w-2 h-2 rounded-full bg-ignitera-500 animate-[pulse-slow_8s_ease-in-out_infinite] shadow-[0_0_10px_#ff4d00]" />
                         <p className="text-ignitera-500 font-medium tracking-wide uppercase">Contact</p>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-medium tracking-tight mb-20 text-white glow-text">
-                        対話を、始めよう。
+                    <h1 className="text-4xl md:text-6xl font-medium tracking-tight mb-20 text-white glow-text break-keep">
+                        対話を、<br className="block md:hidden" />始めよう。
                     </h1>
                 </FadeIn>
 
@@ -99,7 +99,7 @@ export default function ContactPage() {
                                 >
                                     <CheckCircle className="w-16 h-16 text-green-500 mb-6 drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]" />
                                     <h3 className="text-2xl font-bold text-white mb-2 tracking-widest">MESSAGE SENT</h3>
-                                    <p className="text-zinc-400">お問い合わせを送信しました。<br />担当者より順次ご返信いたします。</p>
+                                    <p className="text-zinc-400 break-keep">お問い合わせを送信しました。<br />担当者より順次ご返信いたします。</p>
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                         <div className="space-y-12">
                             <div>
                                 <h3 className="text-sm font-medium text-zinc-500 mb-2">OFFICE</h3>
-                                <p className="text-lg text-white font-light leading-relaxed">
+                                <p className="text-lg text-white font-light leading-relaxed break-keep">
                                     〒100-0005<br />
                                     東京都千代田区丸の内 1-x-x<br />
                                     IGNITERA ビルディング 32F
