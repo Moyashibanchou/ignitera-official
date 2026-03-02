@@ -57,13 +57,15 @@ export default function EnterprisePage() {
 
                     <FadeIn delay={0.2} className="w-full">
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            真の実力は、<br className="md:hidden" />履歴書には書かれない。
+                            面接上手なだけの候補者に、<br className="md:hidden" />もう騙されない。
                         </h1>
                     </FadeIn>
 
                     <FadeIn delay={0.4}>
-                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-3xl mx-auto leading-relaxed mt-6 mb-16">
-                            IGNITERAは、日常の行動ログから候補者の『見えないポテンシャル』を可視化する、<br className="hidden md:block" />次世代の採用評価基盤です。
+                        <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-4xl mx-auto leading-relaxed mt-6 mb-16">
+                            たった数回の面接や履歴書では、候補者の真のポテンシャルは見抜けない。<br className="hidden md:block" />
+                            IGNITERAは、学生の日常的な行動データから『本物の才能』を可視化し、<br className="hidden md:block" />
+                            ミスマッチのない圧倒的な採用ROIを実現します。
                         </p>
                     </FadeIn>
 
@@ -106,8 +108,8 @@ export default function EnterprisePage() {
                 <section className="py-32 relative z-10 border-t border-white/5 bg-black/60">
                     <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
                         <FadeIn>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">The Core Engine</h2>
-                            <p className="text-zinc-400 font-light text-lg">蓄積された非構造化データを、独自のアルゴリズムで静かに、そして確実に解析します。</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">他社が見落とす原石を発掘</h2>
+                            <p className="text-zinc-400 font-light text-lg">学歴や面接スキルに隠れた、真の課題解決能力や熱量を持つ人材に直接アプローチ。</p>
                         </FadeIn>
                     </div>
                     <FadeIn delay={0.3}>
@@ -120,10 +122,9 @@ export default function EnterprisePage() {
                     <div className="max-w-5xl mx-auto px-6">
                         <FadeIn>
                             <div className="text-center mb-16">
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight glow-text">16 Evaluation Metrics</h2>
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight glow-text">採用ミスマッチの劇的削減</h2>
                                 <p className="text-zinc-400 font-light text-lg mb-8">
-                                    4つのレイヤーにまたがる16の指標からなる「アドバンスド・ステータスボード」。<br className="hidden md:block" />
-                                    企業固有の価値観ベクトルを掛け合わせ、真のカルチャーフィットを導き出します。
+                                    行動ログに基づく客観的なステータス評価により、入社後の「こんなはずじゃなかった」をゼロへ。
                                 </p>
                             </div>
 

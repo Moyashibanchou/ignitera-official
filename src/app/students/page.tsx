@@ -141,7 +141,7 @@ export default function StudentsPage() {
                         transition={{ duration: 0.8, delay: 2.0 }}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 mb-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,77,0,0.4)] leading-[1.1]">
-                            学歴フィルターを、<br className="md:hidden" />焼き尽くせ。
+                            履歴書の君ではなく、<br className="md:hidden" />日常の君を証明しろ。
                         </h1>
                     </motion.div>
 
@@ -150,10 +150,10 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 2.2 }}
                     >
-                        <p className="text-lg md:text-xl lg:text-2xl text-zinc-300 font-medium max-w-3xl mx-auto leading-relaxed mb-12 drop-shadow-md">
-                            エントリーシートも、作られた自己PRも、もういらない。<br className="hidden md:block" />
-                            君が日常で刻む『本物の行動ログ』だけが、<br className="hidden md:block" />
-                            君の真の価値（ステータス）を証明する。
+                        <p className="text-lg md:text-xl lg:text-2xl text-zinc-300 font-medium max-w-4xl mx-auto leading-relaxed mb-12 drop-shadow-md">
+                            学歴や面接のテクニックだけで評価される時代は終わった。<br className="hidden md:block" />
+                            IGNITERAは、君の日常の熱中、密かな努力、そして『隠れた才能』をデータ化し、<br className="hidden md:block" />
+                            最高の企業へ直接届ける次世代のプラットフォームだ。
                         </p>
                     </motion.div>
 
@@ -213,9 +213,9 @@ export default function StudentsPage() {
                             },
                             {
                                 step: "02",
-                                title: "PLAY",
-                                subtitle: "熱中する",
-                                desc: "あとは普段通り、自分の好きなプロジェクトや学習に没頭するだけ。",
+                                title: "BREAK RULES",
+                                subtitle: "学歴フィルターを破壊する",
+                                desc: "見栄えの良い経歴ではなく、実際の行動ログが君の価値になる。",
                                 icon: Flame,
                                 color: "text-orange-500",
                                 bg: "bg-orange-500/10",
@@ -224,9 +224,9 @@ export default function StudentsPage() {
                             },
                             {
                                 step: "03",
-                                title: "IGNITE",
-                                subtitle: "着火する",
-                                desc: "行動データから君の『隠れた才能』が解析され、トップ企業から直接オファーが届く。",
+                                title: "BE AUTHENTIC",
+                                subtitle: "ありのままでスカウトが届く",
+                                desc: "偽りの自己PRは不要。君が夢中になっていることが、最強の武器に変わる。",
                                 icon: Zap,
                                 color: "text-amber-400",
                                 bg: "bg-amber-400/10",
