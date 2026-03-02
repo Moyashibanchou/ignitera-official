@@ -57,7 +57,8 @@ export default function EnterprisePage() {
 
                     <FadeIn delay={0.2} className="w-full">
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            面接上手なだけの候補者に、<br className="md:hidden" />もう騙されない。
+                            面接上手なだけの候補者に、<br />
+                            もう騙されない。
                         </h1>
                     </FadeIn>
 
