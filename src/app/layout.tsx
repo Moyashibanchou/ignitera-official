@@ -1,6 +1,6 @@
+import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { ClerkProvider } from '@clerk/nextjs'
@@ -45,16 +45,16 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <ClerkProvider appearance={{ baseTheme: dark }}>
-            <html lang="ja">
-                <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <html lang="ja">
+            <body className={`${inter.className} min-h-screen flex flex-col`}>
+                <ClerkProvider appearance={{ baseTheme: dark }}>
                     <Header />
                     <div className="pt-24 flex-1">
                         {children}
                     </div>
                     <Footer />
-                </body>
-            </html>
-        </ClerkProvider>
+                </ClerkProvider>
+            </body>
+        </html>
     )
 }
