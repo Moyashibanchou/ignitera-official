@@ -42,15 +42,18 @@ export default function OnboardingPage() {
                 updated_at: new Date().toISOString(),
             });
 
-            if (error) throw error;
+            if (error) {
+                console.error("Supabase Error:", error.message, error.details, error);
+                throw error;
+            }
             setStatus("success");
 
             // 少し待ってからダッシュボードにリダイレクトするなどの処理をここで追加できます
             setTimeout(() => {
                 window.location.href = "/students";
             }, 2000);
-        } catch (error) {
-            console.error("Error saving profile:", error);
+        } catch (error: any) {
+            console.error("Catch Error:", error?.message || error);
             setStatus("error");
         }
     };
@@ -130,8 +133,8 @@ export default function OnboardingPage() {
                         type="submit"
                         disabled={status === "loading" || status === "success"}
                         className={`w-full py-4 mt-4 flex justify-center items-center gap-2 rounded-xl font-bold text-lg transition-all duration-300 border ${status === "success"
-                                ? "bg-green-600/20 text-green-400 border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-                                : "bg-orange-600 text-white hover:bg-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] border-orange-400"
+                            ? "bg-green-600/20 text-green-400 border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
+                            : "bg-orange-600 text-white hover:bg-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] border-orange-400"
                             } disabled:opacity-70 disabled:cursor-not-allowed`}
                     >
                         {status === "loading" ? (
