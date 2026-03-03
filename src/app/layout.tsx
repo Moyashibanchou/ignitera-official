@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { ClerkProvider } from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,14 +45,16 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="ja">
-            <body className={`${inter.className} min-h-screen flex flex-col`}>
-                <Header />
-                <div className="pt-24 flex-1">
-                    {children}
-                </div>
-                <Footer />
-            </body>
-        </html>
+        <ClerkProvider appearance={{ baseTheme: dark }}>
+            <html lang="ja">
+                <body className={`${inter.className} min-h-screen flex flex-col`}>
+                    <Header />
+                    <div className="pt-24 flex-1">
+                        {children}
+                    </div>
+                    <Footer />
+                </body>
+            </html>
+        </ClerkProvider>
     )
 }

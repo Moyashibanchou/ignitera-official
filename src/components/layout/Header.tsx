@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 const colors = {
     orange: "hover:text-ignitera-500 hover:drop-shadow-[0_0_8px_rgba(255,77,0,0.8)] transition-all",
@@ -47,13 +48,39 @@ export default function Header() {
                     ))}
                 </nav>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-white p-2"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                {/* Auth Buttons & Mobile Menu Toggle */}
+                <div className="flex items-center gap-4">
+                    <div className="hidden md:flex items-center gap-4">
+                        <SignedOut>
+                            <SignInButton mode="modal">
+                                <button className="px-4 py-2 text-sm font-bold text-zinc-300 hover:text-white transition-colors">
+                                    ログイン
+                                </button>
+                            </SignInButton>
+                            <SignUpButton mode="modal">
+                                <button className="px-5 py-2 text-sm font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-full hover:bg-orange-600/40 hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all">
+                                    新規登録
+                                </button>
+                            </SignUpButton>
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton appearance={{ elements: { avatarBox: "w-10 h-10 border-2 border-orange-500/50 hover:border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.2)]" } }} />
+                        </SignedIn>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden flex items-center gap-4">
+                        <SignedIn>
+                            <UserButton appearance={{ elements: { avatarBox: "w-8 h-8 border border-orange-500/50" } }} />
+                        </SignedIn>
+                        <button
+                            className="text-white p-2"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
+                </div>
             </div>
 
             {/* Mobile Navigation Dropdown */}
@@ -72,13 +99,27 @@ export default function Header() {
                                 href={link.path}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className={`block px-8 py-4 text-lg font-medium border-b border-white/5 ${pathname === link.path
-                                        ? 'text-ignitera-500 bg-white/[0.02]'
-                                        : 'text-zinc-400 hover:text-white hover:bg-white/[0.02] transition-colors'
+                                    ? 'text-ignitera-500 bg-white/[0.02]'
+                                    : 'text-zinc-400 hover:text-white hover:bg-white/[0.02] transition-colors'
                                     }`}
                             >
                                 {link.name}
                             </Link>
                         ))}
+                        <SignedOut>
+                            <div className="px-8 py-6 flex flex-col gap-4 border-t border-white/5 mt-auto">
+                                <SignInButton mode="modal">
+                                    <button className="w-full py-3 text-center font-bold text-zinc-300 bg-white/5 rounded-lg border border-white/10">
+                                        ログイン
+                                    </button>
+                                </SignInButton>
+                                <SignUpButton mode="modal">
+                                    <button className="w-full py-3 text-center font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-lg shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                                        新規登録
+                                    </button>
+                                </SignUpButton>
+                            </div>
+                        </SignedOut>
                     </motion.div>
                 )}
             </AnimatePresence>

@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.39.0",
+    "@clerk/themes": "^2.4.57",
+    "@supabase/supabase-js": "^2.98.0",
     "canvas-confetti": "^1.9.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
