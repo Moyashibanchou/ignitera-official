@@ -10,11 +10,15 @@ export default async function CompanyDashboardPage() {
         return <CompanyDashboardUI profile={null} />;
     }
 
-    const { data } = await supabase
+    const { data, error } = await supabase
         .from("company_profiles")
         .select("*")
         .eq("id", userId)
-        .single();
+        .maybeSingle();
 
-    return <CompanyDashboardUI profile={data as CompanyProfile} />;
+    if (error) {
+        console.error("Error fetching company profile:", error);
+    }
+
+    return <CompanyDashboardUI profile={data as CompanyProfile | null} />;
 }

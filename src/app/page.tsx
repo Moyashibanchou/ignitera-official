@@ -45,7 +45,9 @@ export default function Home() {
                     .from("company_profiles")
                     .select("id")
                     .eq("id", user.id)
-                    .single();
+                    .maybeSingle();
+
+                if (companyError) throw companyError;
 
                 if (companyData) {
                     router.push("/company/dashboard");
@@ -57,7 +59,9 @@ export default function Home() {
                     .from("student_profiles")
                     .select("id")
                     .eq("id", user.id)
-                    .single();
+                    .maybeSingle();
+
+                if (studentError) throw studentError;
 
                 if (studentData) {
                     router.push("/dashboard");
