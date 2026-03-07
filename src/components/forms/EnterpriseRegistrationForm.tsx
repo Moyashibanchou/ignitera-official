@@ -13,7 +13,7 @@ export default function EnterpriseRegistrationForm() {
             <p className="text-gray-400 mb-8">
                 履歴書や面接では見抜けない、候補者の真のポテンシャルを可視化します。以下のフォームより事前登録（無料）にお進みください。
             </p>
-            <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+            <SignUpButton mode="modal" forceRedirectUrl="/company/onboarding">
                 <span
                     className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1 cursor-pointer"
                 >
