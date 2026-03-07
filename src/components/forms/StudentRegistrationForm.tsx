@@ -14,12 +14,12 @@ export default function StudentRegistrationForm() {
                 行動ログの解析とステータス可視化のための事前登録（完全無料）を行います。学生証の画像をご用意の上、お進みください。
             </p>
             <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
-                <button
-                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1"
+                <div
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1 cursor-pointer"
                 >
                     事前登録へ進む（無料）
                     <ArrowRight className="ml-2 w-5 h-5" />
-                </button>
+                </div>
             </SignUpButton>
         </div>
     );
