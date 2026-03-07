@@ -6,6 +6,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Preloader from "@/components/shared/Preloader";
 import NextLink from "next/link";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const AnimatedBackground = () => (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#050505]">
@@ -24,6 +26,14 @@ const AnimatedBackground = () => (
 
 export default function Home() {
     const [showPreloader, setShowPreloader] = useState(true);
+    const { user, isLoaded } = useUser();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (isLoaded && user) {
+            router.push("/dashboard");
+        }
+    }, [isLoaded, user, router]);
 
     useEffect(() => {
         // Only run on initial load
