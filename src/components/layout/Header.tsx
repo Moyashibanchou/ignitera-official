@@ -53,9 +53,9 @@ export default function Header() {
                     <div className="hidden md:flex items-center gap-4">
                         <SignedOut>
                             <SignInButton mode="modal">
-                                <div className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block">
+                                <span className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block">
                                     ログイン
-                                </div>
+                                </span>
                             </SignInButton>
                         </SignedOut>
                         <SignedIn>
@@ -107,9 +107,9 @@ export default function Header() {
                         <SignedOut>
                             <div className="px-8 py-6 flex flex-col gap-4 border-t border-white/5 mt-auto">
                                 <SignInButton mode="modal">
-                                    <div className="w-full py-3 text-center font-bold text-zinc-400 bg-white/5 hover:bg-white/10 transition-colors rounded-lg border border-white/10 cursor-pointer">
+                                    <span className="block w-full py-3 text-center font-bold text-zinc-400 bg-white/5 hover:bg-white/10 transition-colors rounded-lg border border-white/10 cursor-pointer">
                                         ログイン
-                                    </div>
+                                    </span>
                                 </SignInButton>
                             </div>
                         </SignedOut>

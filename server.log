@@ -1,0 +1,24 @@
+
+> ignitera@0.1.0 dev
+> next dev
+
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3000
+   - Environments: .env.local
+
+ ✓ Ready in 3.1s
+ ✓ Compiled /src/middleware in 348ms (180 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 6.6s (1697 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ✓ Compiled in 632ms (755 modules)
+ ✓ Compiled in 109ms (741 modules)
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 3.4s (1777 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ○ Compiling /onboarding ...
+ ✓ Compiled /onboarding in 1103ms (1789 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase

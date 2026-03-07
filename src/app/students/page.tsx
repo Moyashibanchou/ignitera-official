@@ -180,17 +180,17 @@ export default function StudentsPage() {
                         transition={{ duration: 0.8, delay: 2.4 }}
                     >
                         <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
-                            <motion.div
+                            <motion.span
                                 whileHover={{ scale: 1.05, boxShadow: "0px 0px 40px rgba(255, 77, 0, 0.8)" }}
                                 whileTap={{ scale: 0.95 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 className="px-8 py-5 md:px-12 md:py-6 bg-orange-600 text-white rounded-full font-black text-lg md:text-xl tracking-wide shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 relative overflow-hidden group cursor-pointer inline-block"
                             >
                                 {/* Inner shine */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[trace_1.5s_ease-in-out_infinite]" />
+                                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[trace_1.5s_ease-in-out_infinite]" />
                                 無料でステータスを可視化する
                                 <span className="block text-xs font-mono font-normal opacity-80 mt-1 uppercase tracking-widest">Create Free Account</span>
-                            </motion.div>
+                            </motion.span>
                         </SignUpButton>
                     </motion.div>
                 </section>
@@ -286,11 +286,11 @@ export default function StudentsPage() {
                             className="fixed bottom-6 left-1/2 w-[90%] max-w-md z-50 flex justify-center pb-safe"
                         >
                             <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
-                                <div
-                                    className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer"
+                                <span
+                                    className="block w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer"
                                 >
                                     無料で登録する
-                                </div>
+                                </span>
                             </SignUpButton>
                         </motion.div>
                     )}
