@@ -10,6 +10,9 @@ export default function OnboardingPage() {
     const { user, isLoaded, isSignedIn } = useUser();
     const [name, setName] = useState("");
     const [university, setUniversity] = useState("");
+    const [faculty, setFaculty] = useState("");
+    const [department, setDepartment] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [selfPr, setSelfPr] = useState("");
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -38,6 +41,9 @@ export default function OnboardingPage() {
                 id: user.id,
                 name: name,
                 university: university,
+                faculty: faculty,
+                department: department,
+                phone_number: phoneNumber,
                 self_pr: selfPr,
                 updated_at: new Date().toISOString(),
             });
@@ -110,6 +116,51 @@ export default function OnboardingPage() {
                             onChange={(e) => setUniversity(e.target.value)}
                             required
                             placeholder="⚪︎⚪︎大学 ⚪︎⚪︎学部 ⚪︎年"
+                            className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="faculty">
+                            Faculty (学部)
+                        </label>
+                        <input
+                            id="faculty"
+                            type="text"
+                            value={faculty}
+                            onChange={(e) => setFaculty(e.target.value)}
+                            required
+                            placeholder="理工学部"
+                            className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="department">
+                            Department (学科)
+                        </label>
+                        <input
+                            id="department"
+                            type="text"
+                            value={department}
+                            onChange={(e) => setDepartment(e.target.value)}
+                            required
+                            placeholder="情報工学科"
+                            className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="phone_number">
+                            Phone (電話番号)
+                        </label>
+                        <input
+                            id="phone_number"
+                            type="tel"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                            placeholder="090-1234-5678"
                             className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
                         />
                     </div>
