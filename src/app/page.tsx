@@ -31,7 +31,12 @@ export default function Home() {
 
     useEffect(() => {
         if (isLoaded && user) {
-            router.push("/dashboard");
+            const role = user.publicMetadata?.role;
+            if (role === "company") {
+                router.push("/company/dashboard");
+            } else {
+                router.push("/dashboard");
+            }
         }
     }, [isLoaded, user, router]);
 

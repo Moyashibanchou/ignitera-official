@@ -5,6 +5,7 @@ import { useUser } from "@clerk/nextjs";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 import { ChevronRight, ShieldCheck, Loader2 } from "lucide-react";
+import { updateUserRole } from "@/app/actions/user";
 
 export default function OnboardingPage() {
     const { user, isLoaded, isSignedIn } = useUser();
@@ -52,11 +53,18 @@ export default function OnboardingPage() {
                 console.error("Supabase Error:", error.message, error.details, error);
                 throw error;
             }
+
+            // Set role in Clerk
+            const roleResult = await updateUserRole(user.id, "student");
+            if (!roleResult.success) {
+                throw new Error(roleResult.error || "Failed to update role");
+            }
+
             setStatus("success");
 
             // 少し待ってからダッシュボードにリダイレクトするなどの処理をここで追加できます
             setTimeout(() => {
-                window.location.href = "/students";
+                window.location.href = "/dashboard";
             }, 2000);
         } catch (error: any) {
             console.error("Catch Error:", error?.message || error);

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 
 const colors = {
     orange: "hover:text-ignitera-500 hover:drop-shadow-[0_0_8px_rgba(255,77,0,0.8)] transition-all",
@@ -13,6 +13,10 @@ const colors = {
 export default function Header() {
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { user } = useUser();
+
+    // ユーザー属性に応じたマイページURL。デフォルトは /dashboard にする。
+    const dashboardUrl = user?.publicMetadata?.role === "company" ? "/company/dashboard" : "/dashboard";
 
     const navLinks = [
         { name: "Methodology", path: "/methodology" },
@@ -59,7 +63,7 @@ export default function Header() {
                             </SignInButton>
                         </SignedOut>
                         <SignedIn>
-                            <Link href="/dashboard" className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block mr-2">
+                            <Link href={dashboardUrl} className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block mr-2">
                                 マイページ
                             </Link>
                             <UserButton appearance={{ elements: { avatarBox: "w-10 h-10 border-2 border-orange-500/50 hover:border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.2)]" } }} />
@@ -115,7 +119,7 @@ export default function Header() {
                         </SignedOut>
                         <SignedIn>
                             <div className="px-8 py-6 flex flex-col gap-4 border-t border-white/5 mt-auto">
-                                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
+                                <Link href={dashboardUrl} onClick={() => setIsMobileMenuOpen(false)}>
                                     <div className="w-full py-3 text-center font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-lg shadow-[0_0_15px_rgba(249,115,22,0.3)] cursor-pointer">
                                         マイページ
                                     </div>

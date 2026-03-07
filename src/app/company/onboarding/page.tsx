@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser, SignInButton } from "@clerk/nextjs";
 import { supabase } from "@/lib/supabase";
+import { updateUserRole } from "@/app/actions/user";
 import { motion } from "framer-motion";
 import { ArrowRight, Building, Globe, User, Briefcase, AlertCircle, Phone, ChevronDown } from "lucide-react";
 import Preloader from "@/components/shared/Preloader";
@@ -74,7 +75,13 @@ export default function CompanyOnboardingPage() {
                 throw insertError;
             }
 
-            // Successfully inserted, redirect to company dashboard
+            // Update role in Clerk
+            const roleResult = await updateUserRole(user.id, "company");
+            if (!roleResult.success) {
+                throw new Error(roleResult.error || "Failed to update role");
+            }
+
+            // Successfully inserted and role updated, redirect to company dashboard
             router.push("/company/dashboard");
         } catch (err: any) {
             console.error("Submission failed:", err);
