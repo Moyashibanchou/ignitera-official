@@ -53,15 +53,10 @@ export default function Header() {
                     <div className="hidden md:flex items-center gap-4">
                         <SignedOut>
                             <SignInButton mode="modal">
-                                <button className="px-4 py-2 text-sm font-bold text-zinc-300 hover:text-white transition-colors">
+                                <button className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors">
                                     ログイン
                                 </button>
                             </SignInButton>
-                            <SignUpButton mode="modal">
-                                <button className="px-5 py-2 text-sm font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-full hover:bg-orange-600/40 hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all">
-                                    新規登録
-                                </button>
-                            </SignUpButton>
                         </SignedOut>
                         <SignedIn>
                             <UserButton appearance={{ elements: { avatarBox: "w-10 h-10 border-2 border-orange-500/50 hover:border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.2)]" } }} />
@@ -109,15 +104,10 @@ export default function Header() {
                         <SignedOut>
                             <div className="px-8 py-6 flex flex-col gap-4 border-t border-white/5 mt-auto">
                                 <SignInButton mode="modal">
-                                    <button className="w-full py-3 text-center font-bold text-zinc-300 bg-white/5 rounded-lg border border-white/10">
+                                    <button className="w-full py-3 text-center font-bold text-zinc-400 bg-white/5 hover:bg-white/10 transition-colors rounded-lg border border-white/10">
                                         ログイン
                                     </button>
                                 </SignInButton>
-                                <SignUpButton mode="modal">
-                                    <button className="w-full py-3 text-center font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-lg shadow-[0_0_15px_rgba(249,115,22,0.3)]">
-                                        新規登録
-                                    </button>
-                                </SignUpButton>
                             </div>
                         </SignedOut>
                     </motion.div>

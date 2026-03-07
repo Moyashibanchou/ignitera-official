@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, Flame, Zap, Shield, Cpu } from "lucide-react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+import { SignUpButton } from "@clerk/nextjs";
 import Preloader from "@/components/shared/Preloader";
 import StudentRegistrationForm from "@/components/forms/StudentRegistrationForm";
 
@@ -178,17 +179,19 @@ export default function StudentsPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 2.4 }}
                     >
-                        <motion.button
-                            whileHover={{ scale: 1.05, boxShadow: "0px 0px 40px rgba(255, 77, 0, 0.8)" }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            className="px-8 py-5 md:px-12 md:py-6 bg-orange-600 text-white rounded-full font-black text-lg md:text-xl tracking-wide shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 relative overflow-hidden group"
-                        >
-                            {/* Inner shine */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[trace_1.5s_ease-in-out_infinite]" />
-                            無料でステータスを可視化する
-                            <span className="block text-xs font-mono font-normal opacity-80 mt-1 uppercase tracking-widest">Create Free Account</span>
-                        </motion.button>
+                        <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+                            <motion.button
+                                whileHover={{ scale: 1.05, boxShadow: "0px 0px 40px rgba(255, 77, 0, 0.8)" }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                className="px-8 py-5 md:px-12 md:py-6 bg-orange-600 text-white rounded-full font-black text-lg md:text-xl tracking-wide shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 relative overflow-hidden group"
+                            >
+                                {/* Inner shine */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[trace_1.5s_ease-in-out_infinite]" />
+                                無料でステータスを可視化する
+                                <span className="block text-xs font-mono font-normal opacity-80 mt-1 uppercase tracking-widest">Create Free Account</span>
+                            </motion.button>
+                        </SignUpButton>
                     </motion.div>
                 </section>
 
@@ -282,14 +285,13 @@ export default function StudentsPage() {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="fixed bottom-6 left-1/2 w-[90%] max-w-md z-50 flex justify-center pb-safe"
                         >
-                            <a
-                                href="https://forms.gle/syB5oz3tyPuV4k4v8"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer"
-                            >
-                                無料で登録する
-                            </a>
+                            <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+                                <button
+                                    className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer"
+                                >
+                                    無料で登録する
+                                </button>
+                            </SignUpButton>
                         </motion.div>
                     )}
                 </AnimatePresence>

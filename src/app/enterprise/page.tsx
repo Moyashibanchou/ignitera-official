@@ -7,6 +7,7 @@ import IntegrationsMarquee from "@/components/methodology/IntegrationsMarquee";
 import ProprietaryEngineCore from "@/components/methodology/ProprietaryEngineCore";
 import AdvancedStatusBoard from "@/components/methodology/AdvancedStatusBoard";
 import Preloader from "@/components/shared/Preloader";
+import { SignUpButton } from "@clerk/nextjs";
 import EnterpriseRegistrationForm from "@/components/forms/EnterpriseRegistrationForm";
 
 const AnimatedBackground = () => (
@@ -91,14 +92,11 @@ export default function EnterprisePage() {
                     {/* CTAs */}
                     <FadeIn delay={0.6} className="w-full">
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-xl mx-auto">
-                            <a
-                                href="https://forms.gle/Lej96gQzpg1WQEUVA"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full sm:w-auto px-10 py-5 bg-orange-600 hover:bg-orange-500 text-white rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 text-center text-base tracking-wide inline-block hover:-translate-y-1"
-                            >
-                                デモをリクエスト
-                            </a>
+                            <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+                                <button className="w-full sm:w-auto px-10 py-5 bg-orange-600 hover:bg-orange-500 text-white rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 text-center text-base tracking-wide flex-inline justify-center hover:-translate-y-1 cursor-pointer">
+                                    企業アカウントを無料登録
+                                </button>
+                            </SignUpButton>
 
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
@@ -169,14 +167,11 @@ export default function EnterprisePage() {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="fixed bottom-6 left-1/2 w-[90%] max-w-md z-50 flex justify-center pb-safe"
                         >
-                            <a
-                                href="https://forms.gle/Lej96gQzpg1WQEUVA"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer"
-                            >
-                                企業向け登録へ進む
-                            </a>
+                            <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+                                <button className="w-full py-4 bg-orange-600 text-white font-bold text-center rounded-full shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.8)] cursor-pointer">
+                                    企業向け登録へ進む
+                                </button>
+                            </SignUpButton>
                         </motion.div>
                     )}
                 </AnimatePresence>
