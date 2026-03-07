@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { SignUpButton } from "@clerk/nextjs";
 
 export default function EnterpriseRegistrationForm() {
     return (
@@ -12,15 +13,14 @@ export default function EnterpriseRegistrationForm() {
             <p className="text-gray-400 mb-8">
                 履歴書や面接では見抜けない、候補者の真のポテンシャルを可視化します。以下のフォームより事前登録（無料）にお進みください。
             </p>
-            <a
-                href="https://forms.gle/Lej96gQzpg1WQEUVA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1"
-            >
-                企業向け事前登録へ進む
-                <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
+            <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+                <button
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1"
+                >
+                    企業向け事前登録へ進む
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                </button>
+            </SignUpButton>
         </div>
     );
 }

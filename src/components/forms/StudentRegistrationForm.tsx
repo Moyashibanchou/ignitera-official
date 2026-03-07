@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { SignUpButton } from "@clerk/nextjs";
 
 export default function StudentRegistrationForm() {
     return (
@@ -12,15 +13,14 @@ export default function StudentRegistrationForm() {
             <p className="text-gray-400 mb-8">
                 行動ログの解析とステータス可視化のための事前登録（完全無料）を行います。学生証の画像をご用意の上、お進みください。
             </p>
-            <a
-                href="https://forms.gle/syB5oz3tyPuV4k4v8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1"
-            >
-                事前登録へ進む（無料）
-                <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
+            <SignUpButton mode="modal" forceRedirectUrl="/onboarding">
+                <button
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-orange-600 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.6)] border border-orange-400 hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] hover:-translate-y-1"
+                >
+                    事前登録へ進む（無料）
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                </button>
+            </SignUpButton>
         </div>
     );
 }
