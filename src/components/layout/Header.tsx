@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
+import { supabase } from "@/lib/supabase";
+import { useEffect } from "react";
 
 const colors = {
     orange: "hover:text-ignitera-500 hover:drop-shadow-[0_0_8px_rgba(255,77,0,0.8)] transition-all",
@@ -15,8 +17,31 @@ export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { user } = useUser();
 
-    // ユーザー属性に応じたマイページURL。デフォルトは /dashboard にする。
-    const dashboardUrl = user?.publicMetadata?.role === "company" ? "/company/dashboard" : "/dashboard";
+    const [dashboardUrl, setDashboardUrl] = useState("/dashboard");
+
+    useEffect(() => {
+        const fetchRole = async () => {
+            if (!user) return;
+            try {
+                // Check if user is in company_profiles
+                const { data } = await supabase
+                    .from("company_profiles")
+                    .select("id")
+                    .eq("id", user.id)
+                    .single();
+
+                if (data) {
+                    setDashboardUrl("/company/dashboard");
+                } else {
+                    setDashboardUrl("/dashboard");
+                }
+            } catch (err) {
+                console.error("Failed to check user role:", err);
+            }
+        };
+
+        fetchRole();
+    }, [user]);
 
     const navLinks = [
         { name: "Methodology", path: "/methodology" },

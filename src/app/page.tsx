@@ -8,6 +8,7 @@ import Preloader from "@/components/shared/Preloader";
 import NextLink from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 const AnimatedBackground = () => (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#050505]">
@@ -30,21 +31,49 @@ export default function Home() {
     const router = useRouter();
 
     useEffect(() => {
-        if (isLoaded && user) {
-            const role = user.publicMetadata?.role;
-            if (role === "company") {
-                router.push("/company/dashboard");
-            } else {
-                router.push("/dashboard");
-            }
-        }
-    }, [isLoaded, user, router]);
+        if (!isLoaded) return;
 
-    useEffect(() => {
-        // Only run on initial load
-        const timer = setTimeout(() => setShowPreloader(false), 3000);
-        return () => clearTimeout(timer);
-    }, []);
+        if (!user) {
+            setShowPreloader(false);
+            return;
+        }
+
+        const checkRoleAndRedirect = async () => {
+            try {
+                // 1. Check if user is a company
+                const { data: companyData, error: companyError } = await supabase
+                    .from("company_profiles")
+                    .select("id")
+                    .eq("id", user.id)
+                    .single();
+
+                if (companyData) {
+                    router.push("/company/dashboard");
+                    return;
+                }
+
+                // 2. Check if user is a student
+                const { data: studentData, error: studentError } = await supabase
+                    .from("student_profiles")
+                    .select("id")
+                    .eq("id", user.id)
+                    .single();
+
+                if (studentData) {
+                    router.push("/dashboard");
+                    return;
+                }
+
+                // 3. User is neither (needs onboarding), just show home page
+                setShowPreloader(false);
+            } catch (err) {
+                console.error("Error during role check:", err);
+                setShowPreloader(false);
+            }
+        };
+
+        checkRoleAndRedirect();
+    }, [isLoaded, user, router]);
 
     return (
         <>
