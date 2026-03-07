@@ -1,0 +1,25 @@
+
+> ignitera@0.1.0 build
+> next build
+
+   ▲ Next.js 14.1.0
+   - Environments: .env.local
+
+
+> Build error occurred
+Error: EINVAL: invalid argument, readlink 'C:\Users\keike\OneDrive\制作物\g\ignitera\.next\export\404.html'
+    at async Object.readlink (node:internal/fs/promises:971:10)
+    at async C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\lib\recursive-delete.js:58:30
+    at async Promise.all (index 0)
+    at async recursiveDelete (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\lib\recursive-delete.js:51:5)
+    at async C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\lib\recursive-delete.js:68:17
+    at async Promise.all (index 5)
+    at async recursiveDelete (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\lib\recursive-delete.js:51:5)
+    at async C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\build\index.js:690:17
+    at async Span.traceAsyncFn (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\trace\trace.js:151:20)
+    at async build (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\build\index.js:374:9) {
+  errno: -4071,
+  code: 'EINVAL',
+  syscall: 'readlink',
+  path: 'C:\\Users\\keike\\OneDrive\\制作物\\g\\ignitera\\.next\\export\\404.html'
+}

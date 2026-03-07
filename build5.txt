@@ -1,0 +1,67 @@
+
+> ignitera@0.1.0 build
+> next build
+
+   ▲ Next.js 14.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+Compiler edge-server unexpectedly exited with code: null and signal: SIGTERM
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+Error: Invalid supabaseUrl: Must be a valid HTTP or HTTPS URL.
+    at C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\app\onboarding\page.js:42:48189
+    at new rw (C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\app\onboarding\page.js:42:48371)
+    at 31407 (C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\app\onboarding\page.js:42:52507)
+    at t (C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\webpack-runtime.js:1:142)
+    at F (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94693)
+    at C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97108
+    at W._fromJSON (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97546)
+    at JSON.parse (<anonymous>)
+    at N (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94414)
+    at t (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100799)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+Error occurred prerendering page "/onboarding". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Invalid supabaseUrl: Must be a valid HTTP or HTTPS URL.
+    at C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\app\onboarding\page.js:42:48189
+    at new rw (C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\app\onboarding\page.js:42:48371)
+    at 31407 (C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\app\onboarding\page.js:42:52507)
+    at t (C:\Users\keike\OneDrive\制作物\g\ignitera\.next\server\webpack-runtime.js:1:142)
+    at F (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94693)
+    at C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97108
+    at W._fromJSON (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97546)
+    at JSON.parse (<anonymous>)
+    at N (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94414)
+    at t (C:\Users\keike\OneDrive\制作物\g\ignitera\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:100799)
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15) 
+
+> Export encountered errors on following paths:
+	/onboarding/page: /onboarding
