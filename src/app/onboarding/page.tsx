@@ -106,6 +106,21 @@ export default function OnboardingPage() {
                     </div>
 
                     <div>
+                        <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="phone_number">
+                            Phone (電話番号)
+                        </label>
+                        <input
+                            id="phone_number"
+                            type="tel"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                            placeholder="090-1234-5678"
+                            className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
+                        />
+                    </div>
+
+                    <div>
                         <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="university">
                             University (所属大学等)
                         </label>
@@ -149,22 +164,6 @@ export default function OnboardingPage() {
                             className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
                         />
                     </div>
-
-                    <div>
-                        <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="phone_number">
-                            Phone (電話番号)
-                        </label>
-                        <input
-                            id="phone_number"
-                            type="tel"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            required
-                            placeholder="090-1234-5678"
-                            className="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 transition-all font-medium"
-                        />
-                    </div>
-
                     <div>
                         <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 ml-1" htmlFor="self_pr">
                             Self PR (今のあなたの熱意・自己PR)
@@ -211,6 +210,6 @@ export default function OnboardingPage() {
                     )}
                 </form>
             </motion.div>
-        </div>
+        </div >
     );
 }
