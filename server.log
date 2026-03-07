@@ -6,19 +6,28 @@
    - Local:        http://localhost:3000
    - Environments: .env.local
 
- ✓ Ready in 3.1s
- ✓ Compiled /src/middleware in 348ms (180 modules)
- ○ Compiling / ...
- ✓ Compiled / in 6.6s (1697 modules)
+ ✓ Ready in 3.7s
+ ○ Compiling /src/middleware ...
+ ✓ Compiled /src/middleware in 1629ms (180 modules)
+ ○ Compiling /company/onboarding ...
+ ✓ Compiled /company/onboarding in 12.7s (1786 modules)
 
  ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
- ✓ Compiled in 632ms (755 modules)
- ✓ Compiled in 109ms (741 modules)
+ ✓ Compiled in 1268ms (800 modules)
+ ✓ Compiled in 356ms (786 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (212kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
  ○ Compiling /dashboard ...
- ✓ Compiled /dashboard in 3.4s (1777 modules)
+ ✓ Compiled /dashboard in 2.4s (1789 modules)
 
  ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
- ○ Compiling /onboarding ...
- ✓ Compiled /onboarding in 1103ms (1789 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1426ms (1799 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ○ Compiling /enterprise ...
+ ✓ Compiled /enterprise in 3.5s (1865 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ✓ Compiled in 6.6s (1881 modules)
 
  ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase

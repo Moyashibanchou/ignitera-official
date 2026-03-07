@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useUser, SignInButton } from "@clerk/nextjs";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
-import { ArrowRight, Building, Globe, User, Briefcase, AlertCircle } from "lucide-react";
+import { ArrowRight, Building, Globe, User, Briefcase, AlertCircle, Phone, ChevronDown } from "lucide-react";
 import Preloader from "@/components/shared/Preloader";
 
 export default function CompanyOnboardingPage() {
@@ -14,6 +14,7 @@ export default function CompanyOnboardingPage() {
 
     const [formData, setFormData] = useState({
         company_name: "",
+        phone_number: "",
         industry: "",
         contact_person: "",
         website_url: "",
@@ -44,7 +45,7 @@ export default function CompanyOnboardingPage() {
         );
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
@@ -62,6 +63,7 @@ export default function CompanyOnboardingPage() {
                 .insert({
                     id: user.id,
                     company_name: formData.company_name,
+                    phone_number: formData.phone_number,
                     industry: formData.industry,
                     contact_person: formData.contact_person,
                     website_url: formData.website_url,
@@ -137,20 +139,51 @@ export default function CompanyOnboardingPage() {
                             </div>
 
                             <div className="space-y-2">
+                                <label className="text-xs font-mono text-zinc-500 uppercase tracking-widest pl-1">Phone Number</label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-500">
+                                        <Phone className="w-5 h-5" />
+                                    </div>
+                                    <input
+                                        type="tel"
+                                        name="phone_number"
+                                        required
+                                        value={formData.phone_number}
+                                        onChange={handleChange}
+                                        className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all font-medium"
+                                        placeholder="03-1234-5678"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-2 md:col-span-2">
                                 <label className="text-xs font-mono text-zinc-500 uppercase tracking-widest pl-1">Industry</label>
                                 <div className="relative">
                                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-500">
                                         <Briefcase className="w-5 h-5" />
                                     </div>
-                                    <input
-                                        type="text"
+                                    <select
                                         name="industry"
                                         required
                                         value={formData.industry}
                                         onChange={handleChange}
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all font-medium"
-                                        placeholder="IT / Webサービス"
-                                    />
+                                        className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-10 py-4 text-white focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all font-medium appearance-none"
+                                    >
+                                        <option value="" disabled className="text-zinc-500 bg-black">業界を選択してください</option>
+                                        <option value="IT・通信・Web" className="bg-black">IT・通信・Web</option>
+                                        <option value="メーカー・製造" className="bg-black">メーカー・製造</option>
+                                        <option value="商社・小売・流通" className="bg-black">商社・小売・流通</option>
+                                        <option value="金融・保険" className="bg-black">金融・保険</option>
+                                        <option value="コンサルティング・士業" className="bg-black">コンサルティング・士業</option>
+                                        <option value="人材・教育" className="bg-black">人材・教育</option>
+                                        <option value="広告・マスコミ・エンタメ" className="bg-black">広告・マスコミ・エンタメ</option>
+                                        <option value="不動産・建設" className="bg-black">不動産・建設</option>
+                                        <option value="医療・福祉" className="bg-black">医療・福祉</option>
+                                        <option value="その他" className="bg-black">その他</option>
+                                    </select>
+                                    <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-zinc-500">
+                                        <ChevronDown className="w-5 h-5" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
