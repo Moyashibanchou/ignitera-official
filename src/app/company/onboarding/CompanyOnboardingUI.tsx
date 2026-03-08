@@ -74,8 +74,8 @@ export default function CompanyOnboardingUI() {
             // Sync updated metadata locally so the next page knows the new role immediately
             await user.reload();
 
-            // Successfully inserted, redirect to company dashboard
-            router.push("/company/dashboard");
+            // Successfully inserted, redirect to company dashboard using window.location to bust cache
+            window.location.href = "/company/dashboard";
         } catch (err: any) {
             console.error("Submission failed:", err);
             setError("登録中にエラーが発生しました。時間を置いて再度お試しください。");
