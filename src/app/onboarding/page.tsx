@@ -51,6 +51,9 @@ export default function OnboardingPage() {
                 throw new Error(result.error);
             }
 
+            // Sync updated metadata locally so the next page knows the new role immediately
+            await user.reload();
+
             setStatus("success");
 
             // 少し待ってからダッシュボードにリダイレクトするなどの処理をここで追加できます

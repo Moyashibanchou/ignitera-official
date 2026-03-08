@@ -71,6 +71,9 @@ export default function CompanyOnboardingPage() {
                 throw new Error(result.error);
             }
 
+            // Sync updated metadata locally so the next page knows the new role immediately
+            await user.reload();
+
             // Successfully inserted, redirect to company dashboard
             router.push("/company/dashboard");
         } catch (err: any) {
