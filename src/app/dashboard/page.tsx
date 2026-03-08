@@ -12,8 +12,12 @@ export default async function DashboardPage() {
     try {
         const client = await clerkClient();
         const user = await client.users.getUser(userId);
-        if (user.publicMetadata?.role === "company") {
+        const role = user.publicMetadata?.role;
+
+        if (role === "company") {
             redirect("/company/dashboard");
+        } else if (role !== "student") {
+            redirect("/");
         }
     } catch (e) {
         console.error("Clerk fetch error:", e);

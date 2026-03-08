@@ -21,7 +21,7 @@ export default function Header() {
     }, []);
 
     const role = user?.publicMetadata?.role;
-    const dashboardUrl = role === "company" ? "/company/dashboard" : "/dashboard";
+    const dashboardUrl = role === "company" ? "/company/dashboard" : role === "student" ? "/dashboard" : null;
 
     const navLinks = [
         { name: "Methodology", path: "/methodology" },
@@ -68,7 +68,7 @@ export default function Header() {
                             </SignInButton>
                         </SignedOut>
                         <SignedIn>
-                            {mounted && (
+                            {mounted && dashboardUrl && (
                                 <Link href={dashboardUrl} className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block mr-2">
                                     マイページ
                                 </Link>
@@ -126,7 +126,7 @@ export default function Header() {
                         </SignedOut>
                         <SignedIn>
                             <div className="px-8 py-6 flex flex-col gap-4 border-t border-white/5 mt-auto">
-                                {mounted && (
+                                {mounted && dashboardUrl && (
                                     <Link href={dashboardUrl} onClick={() => setIsMobileMenuOpen(false)}>
                                         <div className="w-full py-3 text-center font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-lg shadow-[0_0_15px_rgba(249,115,22,0.3)] cursor-pointer">
                                             マイページ
