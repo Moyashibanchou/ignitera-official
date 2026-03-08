@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 const colors = {
@@ -12,10 +12,20 @@ const colors = {
 export default function Header() {
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { user } = useUser();
+    const { user, isLoaded } = useUser();
 
-    const role = user?.publicMetadata?.role;
-    const dashboardUrl = role === "company" ? "/company/dashboard" : "/dashboard";
+    const [dashboardUrl, setDashboardUrl] = useState("/dashboard");
+
+    useEffect(() => {
+        if (isLoaded && user) {
+            const role = user.publicMetadata?.role;
+            if (role === "company") {
+                setDashboardUrl("/company/dashboard");
+            } else {
+                setDashboardUrl("/dashboard");
+            }
+        }
+    }, [isLoaded, user]);
 
     const navLinks = [
         { name: "Methodology", path: "/methodology" },
