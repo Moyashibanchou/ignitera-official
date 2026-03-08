@@ -1,5 +1,6 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { supabase } from "@/lib/supabase";
+import { redirect } from "next/navigation";
 import CompanyDashboardUI, { CompanyProfile } from "./CompanyDashboardUI";
 
 export default async function CompanyDashboardPage() {
@@ -8,6 +9,16 @@ export default async function CompanyDashboardPage() {
 
     if (!userId) {
         return <CompanyDashboardUI profile={null} />;
+    }
+
+    try {
+        const client = await clerkClient();
+        const user = await client.users.getUser(userId);
+        if (user.publicMetadata?.role === "student") {
+            redirect("/dashboard");
+        }
+    } catch (e) {
+        console.error("Clerk fetch error:", e);
     }
 
     const { data, error } = await supabase

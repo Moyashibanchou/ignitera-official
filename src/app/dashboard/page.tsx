@@ -79,6 +79,12 @@ export default function DashboardPage() {
 
         const fetchProfile = async () => {
             try {
+                const role = user.publicMetadata?.role;
+                if (role === "company") {
+                    window.location.href = "/company/dashboard";
+                    return;
+                }
+
                 const { data, error } = await supabase
                     .from("student_profiles")
                     .select("*")

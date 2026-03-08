@@ -1,20 +1,27 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import HomeUI from "./HomeUI";
 
 export default async function Home() {
-    const { sessionClaims } = await auth();
+    const { userId } = await auth();
 
-    // Verify role in session claims (Clerk publicMetadata)
-    const role = (sessionClaims?.metadata as any)?.role || (sessionClaims?.publicMetadata as any)?.role;
+    if (userId) {
+        try {
+            const client = await clerkClient();
+            const user = await client.users.getUser(userId);
+            const role = user.publicMetadata?.role;
 
-    if (role === "company") {
-        redirect("/company/dashboard");
-    } else if (role === "student") {
-        redirect("/dashboard");
+            if (role === "company") {
+                redirect("/company/dashboard");
+            } else if (role === "student") {
+                redirect("/dashboard");
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
     }
 
-    // Role is not set, meaning they haven't completed onboarding.
+    // Role is not set, meaning they haven't completed onboarding, or they are not logged in.
     // Render the original top page UI
     return <HomeUI />;
 }
