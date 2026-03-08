@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 import { ChevronRight, ShieldCheck, Loader2 } from "lucide-react";
+import { submitStudentOnboarding } from "@/app/actions/onboarding";
 
 export default function OnboardingPage() {
     const { user, isLoaded, isSignedIn } = useUser();
@@ -37,20 +37,18 @@ export default function OnboardingPage() {
         setStatus("loading");
 
         try {
-            const { error } = await supabase.from("student_profiles").upsert({
-                id: user.id,
-                name: name,
-                university: university,
-                faculty: faculty,
-                department: department,
+            const result = await submitStudentOnboarding(user.id, {
+                name,
+                university,
+                faculty,
+                department,
                 phone_number: phoneNumber,
                 self_pr: selfPr,
-                updated_at: new Date().toISOString(),
             });
 
-            if (error) {
-                console.error("Supabase Error:", error.message, error.details, error);
-                throw error;
+            if (!result.success) {
+                console.error("Server Action Error:", result.error);
+                throw new Error(result.error);
             }
 
             setStatus("success");

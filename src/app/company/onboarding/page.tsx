@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser, SignInButton } from "@clerk/nextjs";
-import { supabase } from "@/lib/supabase";
+import { submitCompanyOnboarding } from "@/app/actions/onboarding";
 import { motion } from "framer-motion";
 import { ArrowRight, Building, Globe, User, Briefcase, AlertCircle, Phone, ChevronDown } from "lucide-react";
 import Preloader from "@/components/shared/Preloader";
@@ -58,20 +58,17 @@ export default function CompanyOnboardingPage() {
         setError(null);
 
         try {
-            const { error: insertError } = await supabase
-                .from("company_profiles")
-                .insert({
-                    id: user.id,
-                    company_name: formData.company_name,
-                    phone_number: formData.phone_number,
-                    industry: formData.industry,
-                    contact_person: formData.contact_person,
-                    website_url: formData.website_url,
-                });
+            const result = await submitCompanyOnboarding(user.id, {
+                company_name: formData.company_name,
+                phone_number: formData.phone_number,
+                industry: formData.industry,
+                contact_person: formData.contact_person,
+                website_url: formData.website_url,
+            });
 
-            if (insertError) {
-                console.error("Supabase insert error:", insertError);
-                throw insertError;
+            if (!result.success) {
+                console.error("Server Action Error:", result.error);
+                throw new Error(result.error);
             }
 
             // Successfully inserted, redirect to company dashboard
