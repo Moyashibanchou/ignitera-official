@@ -14,18 +14,14 @@ export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { user, isLoaded } = useUser();
 
-    const [dashboardUrl, setDashboardUrl] = useState("/dashboard");
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        if (isLoaded && user) {
-            const role = user.publicMetadata?.role;
-            if (role === "company") {
-                setDashboardUrl("/company/dashboard");
-            } else {
-                setDashboardUrl("/dashboard");
-            }
-        }
-    }, [isLoaded, user]);
+        setMounted(true);
+    }, []);
+
+    const role = user?.publicMetadata?.role;
+    const dashboardUrl = role === "company" ? "/company/dashboard" : "/dashboard";
 
     const navLinks = [
         { name: "Methodology", path: "/methodology" },
@@ -72,9 +68,11 @@ export default function Header() {
                             </SignInButton>
                         </SignedOut>
                         <SignedIn>
-                            <Link href={dashboardUrl} className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block mr-2">
-                                マイページ
-                            </Link>
+                            {mounted && (
+                                <Link href={dashboardUrl} className="px-4 py-2 text-sm font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer inline-block mr-2">
+                                    マイページ
+                                </Link>
+                            )}
                             <UserButton appearance={{ elements: { avatarBox: "w-10 h-10 border-2 border-orange-500/50 hover:border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.2)]" } }} />
                         </SignedIn>
                     </div>
@@ -128,11 +126,13 @@ export default function Header() {
                         </SignedOut>
                         <SignedIn>
                             <div className="px-8 py-6 flex flex-col gap-4 border-t border-white/5 mt-auto">
-                                <Link href={dashboardUrl} onClick={() => setIsMobileMenuOpen(false)}>
-                                    <div className="w-full py-3 text-center font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-lg shadow-[0_0_15px_rgba(249,115,22,0.3)] cursor-pointer">
-                                        マイページ
-                                    </div>
-                                </Link>
+                                {mounted && (
+                                    <Link href={dashboardUrl} onClick={() => setIsMobileMenuOpen(false)}>
+                                        <div className="w-full py-3 text-center font-bold text-white bg-orange-600/20 border border-orange-500/50 rounded-lg shadow-[0_0_15px_rgba(249,115,22,0.3)] cursor-pointer">
+                                            マイページ
+                                        </div>
+                                    </Link>
+                                )}
                             </div>
                         </SignedIn>
                     </motion.div>
