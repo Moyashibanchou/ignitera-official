@@ -6,7 +6,7 @@ import { SignUpButton } from "@clerk/nextjs";
 import { ChevronRight, Search, Zap, ShieldCheck } from "lucide-react";
 import EvaluationCharts from "@/components/EvaluationCharts";
 
-export default function EnterpriseLandingPage() {
+export default function CompanyLandingPage() {
     return (
         <div className="min-h-screen bg-[#050505] relative text-zinc-300 font-sans selection:bg-orange-500 selection:text-white pt-32 pb-24 overflow-hidden">
             {/* Background effects */}
@@ -25,10 +25,10 @@ export default function EnterpriseLandingPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight mb-8 break-keep">
-                            <span className="block mb-2 md:mb-4 text-zinc-400 text-2xl md:text-3xl font-bold tracking-widest drop-shadow-md">面接の嘘を見抜け。</span>
-                            <span className="block text-2xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_25px_rgba(6,182,212,0.8)]">
-                                実務データで証明された、<br className="hidden md:block" />「本物」だけを。
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight mb-8">
+                            <span className="block mb-2 text-zinc-400 text-2xl md:text-3xl font-bold tracking-widest drop-shadow-md">面接の嘘を見抜け。</span>
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_25px_rgba(6,182,212,0.8)]">
+                                実務データで証明された<br />『本物』だけを。
                             </span>
                         </h1>
                     </motion.div>
@@ -39,8 +39,8 @@ export default function EnterpriseLandingPage() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-12 break-keep"
                     >
-                        「ガクチカ」という作られたストーリーはもういらない。<br />
-                        実際のプロジェクト遂行で蓄積された45の行動データから、<br />
+                        「ガクチカ」という作られたストーリーはもういらない。<br className="hidden md:block" />
+                        実際のプロジェクト遂行で蓄積された45の行動データから、<br className="hidden md:block" />
                         御社に最適なポテンシャル人材を圧倒的な精度でマッチングします。
                     </motion.p>
 
@@ -72,8 +72,8 @@ export default function EnterpriseLandingPage() {
                             <Zap className="w-4 h-4" />
                             DATA-DRIVEN RECRUITING
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] break-keep">
-                            履歴書では見えない、<br className="md:hidden" />『45の真実』を可視化
+                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                            履歴書では見えない<br className="md:hidden" />『45の真実』を可視化
                         </h2>
                         <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto break-keep">
                             行動力、成長意欲、マインドセット。<br className="hidden md:block" />
@@ -101,7 +101,7 @@ export default function EnterpriseLandingPage() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] break-keep">
+                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
                             データに基づく、確実なマッチング
                         </h2>
                     </motion.div>
@@ -111,21 +111,21 @@ export default function EnterpriseLandingPage() {
                             number="01"
                             icon={<Search className="w-10 h-10 text-cyan-400" />}
                             title={<>データの閲覧・検索</>}
-                            description={<>45項目のチャートから、自社のカルチャーに合う人材を検索・選定。</>}
+                            description="45項目のチャートから、自社のカルチャーに合う人材を絞り込み。データがすべてを語る、新しい検索体験。"
                             delay={0.1}
                         />
                         <StepCard
                             number="02"
                             icon={<Zap className="w-10 h-10 text-blue-400" />}
                             title={<>運営へのリクエスト</>}
-                            description={<>気になる学生への業務委託や面談を、IGNITERA運営に直接依頼。</>}
+                            description="気になる学生への業務委託や面談をIGNITERA運営に直接依頼。スカウトからエージェント対応までシームレスに。"
                             delay={0.3}
                         />
                         <StepCard
                             number="03"
                             icon={<ShieldCheck className="w-10 h-10 text-indigo-400" />}
                             title={<>リスクゼロでの協働</>}
-                            description={<>まずは実務のタスク単位からアサインし、実際の適性を見極め。</>}
+                            description="まずは実務の小さなタスク単位からアサインし、適性を見極め。ミスマッチのない採用の最終形がここに。"
                             delay={0.5}
                         />
                     </div>
@@ -144,7 +144,7 @@ export default function EnterpriseLandingPage() {
                         transition={{ duration: 0.8 }}
                         className="relative z-10"
                     >
-                        <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight break-keep">
+                        <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
                             次世代のタレントを、<br />
                             確実なデータで獲得せよ。
                         </h2>
@@ -175,7 +175,7 @@ export default function EnterpriseLandingPage() {
     );
 }
 
-function StepCard({ number, icon, title, description, delay }: { number: string, icon: React.ReactNode, title: React.ReactNode, description: React.ReactNode, delay: number }) {
+function StepCard({ number, icon, title, description, delay }: { number: string, icon: React.ReactNode, title: React.ReactNode, description: string, delay: number }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}

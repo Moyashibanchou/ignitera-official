@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { AlertCircle, Phone, GraduationCap, Building2, BookOpen, Flame, ChevronRight, LayoutDashboard, Edit3, Save, X } from "lucide-react";
 import Link from "next/link";
 import Preloader from "@/components/shared/Preloader";
+import EvaluationCharts from "@/components/EvaluationCharts";
 
 // DBデータのインタフェース
 interface StudentProfile {
@@ -276,6 +277,8 @@ export default function DashboardUI() {
                                         </p>
                                     </div>
                                 </div>
+
+                                <EvaluationCharts />
                             </>
                         )}
                     </motion.div>
